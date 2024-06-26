@@ -1,0 +1,48 @@
+<main>
+    <div>
+        <!-- HEADER -->
+        <div class="header topbar">
+            
+        </div>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar-wrapper" [class]="showSidebar? 'show-sidebar': ''">
+            <div>
+                <h1>DASHBOARD</h1>
+                <span>RH</span>
+                <button (click)="showSb()">SHOW</button>
+            </div>
+            <!-- <hr> -->
+             <menu>
+                <li>
+                    <span>Tienda</span>
+                    <ul>
+                        <li>
+                            <a>
+                                <div>
+                                    <span>Ventas</span>
+                                </div>
+                                <div>
+                                    
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+             </menu>
+        </nav>
+
+        <!-- CONTENT -->
+        <div class='content-wrapper'>
+            <div class="container-fluid">
+                <button (click)="showSb()">SHOW</button>
+                <p>Muestra: {{showSidebar}}</p>
+                <a href="">adfaff</a>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae 
+                    distinctio pariatur adipisci quas facilis ducimus tempora ex, 
+                    assumenda ipsa sint omnis tenetur maiores maxime excepturi quisquam 
+                    voluptate ut necessitatibus veniam?</p>
+            </div>
+        </div>
+    </div>
+</main>

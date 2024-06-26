@@ -1,0 +1,99 @@
+
+// LIGHT
+$light-global-color-1: #F3F3F0;
+$light-global-color-2: #848288;
+$light-global-color-3: #E64D2B;
+$light-global-color-4: #B68352;
+$light-global-color-5: #444656;
+
+$blue: #4e73df;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #e74a3b;
+$orange: #fd7e14;
+$yellow: #f6c23e;
+$green: #1cc88a;
+$teal: #20c9a6;
+$cyan: #36b9cc;
+
+$light-primary: #E64D2B;
+$light-secondary: #858796;
+$light-success: #1cc88a;
+$light-info: #36b9cc;
+$light-warning: #f6c23e;
+$light-danger: #e74a3b;
+$light-light: #f8f9fc;
+$light-dark: #5a5c69;
+$light-black: #252525;
+$light-error: #FF1943;
+
+$light-white: #fff;
+$light-gray: #858796;
+$light-gray-dark: #5a5c69;
+
+$light-primary-bg-color-focus: #2e59d9;
+$light-primary-border-color-focus: #2653d4;
+$light-primary-bg-color-hover: #2e59d9;
+$light-primary-boder-color-hover: #2653d4;
+
+
+
+$light-p-color-btn-default: #858796;
+
+$light-very-light-pink: #414141cb;
+$light-text-input-field: #F7F7F7;
+$light-hospital-green: #ACD9B2;
+
+$light-bg-header-topbar: #ffffff;
+$light-bg-sidebar: #19FF8F;
+
+// $light-bg-login: linear-gradient(-135deg, #FFDE00 0%, #19FF8F 100%);
+$light-bg-login: linear-gradient(-135deg, #313131 0%, #3d3d3d 100%);
+
+// DARK
+
+$dark-primary: #E64D2B;
+$dark-secondary: #858796;
+$dark-success: #1cc88a;
+$dark-info: #36b9cc;
+$dark-warning: #f6c23e;
+$dark-danger: #e74a3b;
+$dark-light: #f8f9fc;
+$dark-dark: #5a5c69;
+$dark-black: #252525;
+$dark-error: #FF1943;
+
+$sm: 14px;
+$md: 16px;
+$lg: 18px;
+$xl: 20px;
+$breakpoint-xs: 0;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+/* $breakpoint-lg: 992px; */
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+
+$font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+/* Duo 1 */
+$font-family-Nunito: 'Nunito', sans-serif;
+$font-family-pt-sans: 'PT Sans', sans-serif;
+/* Duo 2 */
+$font-family-cormorant : 'Cormorant', serif;
+$font-family-fira-sans : 'Fira Sans', sans-serif;
+/* Duo 3 */
+$font-family-roboto : 'Roboto', sans-serif;
+$font-family-lora : 'Lora', serif;
+/* Duo 4 */
+$font-family-raleway : 'Raleway', sans-serif;
+$font-family-vollkorn : 'Vollkorn', serif;
+
+$header-height: 56px;
+$sidebar-width: 244px;
+$sidebar-min-width: 244px;

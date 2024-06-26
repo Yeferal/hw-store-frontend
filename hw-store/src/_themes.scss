@@ -1,0 +1,13 @@
+@import 'variables';
+
+.light-theme {
+    --primary-color: #{$light-primary};
+    --secondary-color: #{$light-secondary};
+
+    --bg-login: #{$light-bg-login};
+}
+
+.dark-theme {
+    --primary-color: #{$dark-primary};
+    --secondary-color: #{$dark-secondary};
+}
