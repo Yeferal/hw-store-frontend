@@ -1,0 +1,75 @@
+<!-- SIDEBAR -->
+<nav class="sidebar-wrapper" [class]="showSidebar? 'show-sidebar': ''">
+    <div class="top-sidebar">
+        <div class="title-dash-simple">
+            <h1>Dashboard</h1>
+            <span>RH</span>
+        </div>
+        <!-- <button (click)="toggleSidebar()">SHOW</button> -->
+    </div>
+    <!-- <hr> -->
+     <menu>
+        <!-- <li class="menu-links">
+            <span class="title-menu-list">Tienda</span>
+            <ul class="father-list">
+                <li class="child-section">
+                    <a class="container-toggle">
+                        <div class="toggle-title">
+                            <i class="icon">
+                                <fa-icon [icon]="iconFaShop"></fa-icon>
+                            </i>
+                            <span>Ventas</span>
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="icon-right">
+                                <fa-icon [icon]="iconFaAngleDown" class="rotate-icon"></fa-icon>
+                            </i>
+                        </div>
+                    </a>
+                    <div class="childs-link">
+                        <ul>
+                            <li class="li-selected"><a>Realizar Venta</a></li>
+                            <li><a>Modificar Venta</a></li>
+                            <li><a>Reintegrar Producto</a></li>
+                            <li><a>Sugerencias</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </li> -->
+        @for (item of menuLinks; track item.id) {
+            <li class="menu-links">
+                <span class="title-menu-list">{{item.section}}</span>
+                <ul class="father-list">
+                    @for (subSection of item.subSections; track subSection.id) {
+                        <li class="child-section">
+                            <a class="container-toggle" (click)="setSubSection(item.id, subSection.id)">
+                                <div class="toggle-title">
+                                    <i class="icon">
+                                        <fa-icon [icon]="subSection.icon"></fa-icon>
+                                    </i>
+                                    <span>{{subSection.name}}</span>
+                                </div>
+                                <div class="toggle-icon">
+                                    <i class="icon-right">
+                                        <fa-icon [icon]="iconFaAngleDown" [class.rotate-icon]="!subSection.show"></fa-icon>
+                                    </i>
+                                </div>
+                            </a>
+                            <div class="childs-link">
+                                @if (subSection.show) {
+                                    <ul>
+                                        @for (linkItem of subSection.links; track linkItem.id) {
+                                            <li [class.li-selected]="linkItem.selected" (click)="setLink(item.id, subSection.id, linkItem.id)"><a>{{linkItem.name}}</a></li>
+                                        }
+                                    </ul>
+                                }
+                                
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+     </menu>
+</nav>

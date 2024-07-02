@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'themes';
 @import 'variables';
+@import 'fonts';
 
 * {
     margin: 0;
@@ -15,7 +16,7 @@ html, body {
 
 body {
     margin: 0;
-    font-family: $font-family-vollkorn;
+    font-family: var(--font-family-primary);
 }
 
 
@@ -109,7 +110,8 @@ body {
     justify-content: space-between;
     width: 100%;
     height: $header-height;
-    padding: 2rem;
+    // padding: 2rem;
+    background: rgb(255, 255, 255);
     box-shadow: 0.25rem 0 0.5rem rgba(0, 0, 0, 0.175);
 }
 
@@ -123,6 +125,7 @@ body {
     width: $sidebar-width;
     min-width: $sidebar-min-width;
     height: 100%;
+    background: rgb(255, 255, 255);
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.175);
     transition: left 0.3s ease-in-out;
 }
@@ -135,9 +138,12 @@ body {
     z-index: 6;
     display: block;
     flex: 1;
+    height: 100vh;
     padding: 0;
     padding-top: $header-height;
     padding-left: $sidebar-width;
+    // background: rgba(243, 243, 243, 0.521);
+    background: rgb(255, 255, 255);
 }
 
 @media (max-width: $breakpoint-lg) {
@@ -163,9 +169,215 @@ body {
 }
 
 
-.container-fluid {
-    height: 100%;
+
+.sidebar-wrapper > menu {
+    position: relative;
+    max-height: 100vh;
+    padding: 0 0.5rem;
+    padding-top: $header-height;
+    overflow: auto;
+    scrollbar-width: thin;
+    // scrollbar-color: rgba(0, 0, 0, .5) rgba(0, 0, 0, 0);
+    scrollbar-color: rgba(53, 53, 53, 0.25) rgba(0, 0, 0, 0);
+}
+
+.sidebar-wrapper > menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-wrapper > menu::-webkit-scrollbar:vertical {
+    width: 4px;
+}
+
+.sidebar-wrapper > menu::-webkit-scrollbar-button:increment, .sidebar-wrapper > menu::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.sidebar-wrapper > menu::-webkit-scrollbar:horizontal {
+    height: 4px;
+}
+
+.sidebar-wrapper > menu::-webkit-scrollbar-thumb {
+    background-color: #9e9e9e6c;
+    border-radius: 20px;
+}
+
+.sidebar-wrapper > menu::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+
+.top-sidebar {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $header-height;
     width: 100%;
+    padding: 0.5rem;
+    background: rgb(255, 255, 255);
+    box-shadow: -0.25rem 0 0.5rem rgba(0, 0, 0, 0.175);
+}
+
+.title-dash-simple {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.title-dash-simple h1 {
+    font-size: 1.50em;
+    font-family: var(--font-family-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.title-dash-simple > span {
+    margin-left: 0.25em;
+    font-weight: 800;
+    font-family: var(--font-family-secondary);
+    color: var(--primary-color);
+    // transform: rotate(-45deg) translateY(-4px) scale(0.7);
+
+}
+
+.menu-links, .menu-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.menu-links {
+    position: relative;
+    height: auto;
+    width: 100%;
+    padding: 0 0.5rem;
+}
+
+.title-menu-list {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+    font-family: var(--font-family-primary);
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+}
+
+
+.child-section {
+    margin: 0rem 0;
+}
+
+.container-toggle {
+    display: flex;
+    justify-content: space-between;
+    min-width: 100%;
+    max-width: 100%;
+    margin-bottom: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    font-family: var(--font-family-secondary);
+    transition: color 0.2s ease-in-out;
+    cursor: default;
+}
+
+.container-toggle:hover {
+    background: rgba(226, 226, 226, 0.375);
+    border-radius: 4px;
+}
+
+
+
+.toggle-title > .icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.toggle-icon > .icon-right > fa-icon > svg {  
+    transition: transform 0.2s ease-out;
+}
+
+.toggle-icon > .icon-right > .rotate-icon > svg {  
+    transform: rotate(-90deg);
+}
+
+.toggle-title > span {
+    color: #7e7e7e;
+    font-family: var(--font-family-secondary);
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: capitalize;
+    transition: color 0.2s ease-in-out, font-size 0.1s ease-in-out;
+}
+
+.container-toggle:hover > .toggle-title > span {
+    color: rgb(0, 0, 0);
+}
+
+.container-toggle:active > .toggle-title > span {
+    font-size: 1.125rem;
+}
+
+.icon-right {
+    font-size: 1em;
+}
+
+.childs-link {
+    padding-bottom: 1rem;
+}
+
+.childs-link li {
+    padding: 0.25rem 1.5rem;
+    color: #868686;
+    font-size: 1em;
+    font-family: var(--font-family-secondary);
+    user-select: none;
+    cursor: default;
+}
+
+.childs-link li:hover, .childs-link li:focus {
+    border-radius: 4px;
+    background: rgba(226, 226, 226, 0.375);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    transition: color 0.2s ease-in-out;
+}
+
+.childs-link li:active {
+    border-radius: 4px;
+    // color: rgb(196, 196, 196);
+    color: #E64D2B;
+    background: rgba(226, 226, 226, 0.375);
+    // background: #e64d2b4f;
+}
+
+.childs-link-selected {
+    border-radius: 4px;
+    color: #E64D2B;
+    background: rgba(226, 226, 226, 0.375);
+}
+
+.li-selected {
+    border-radius: 4px;
+    background: rgba(226, 226, 226, 0.375);
+}
+
+.li-selected > a {
+    color: #E64D2B;
+    font-weight: 800;
+}
+
+
+
+
+
+
+.container-fluid {
+    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;

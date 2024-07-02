@@ -1,10 +1,13 @@
 
 // LIGHT
 $light-global-color-1: #F3F3F0;
-$light-global-color-2: #848288;
-$light-global-color-3: #E64D2B;
-$light-global-color-4: #B68352;
-$light-global-color-5: #444656;
+$light-global-color-2: #6490AD;
+// $light-global-color-2: #8EB8BD;
+$light-global-color-3: #2A86FF;
+// $light-global-color-3: #00B4DB;
+// $light-global-color-3: #0083B0;
+$light-global-color-4: #69628C;
+$light-global-color-5: #2F4253;
 
 $blue: #4e73df;
 $indigo: #6610f2;
@@ -17,17 +20,17 @@ $green: #1cc88a;
 $teal: #20c9a6;
 $cyan: #36b9cc;
 
-$light-primary: #E64D2B;
-$light-secondary: #858796;
-$light-success: #1cc88a;
-$light-info: #36b9cc;
-$light-warning: #f6c23e;
-$light-danger: #e74a3b;
-$light-light: #f8f9fc;
-$light-dark: #5a5c69;
-$light-black: #252525;
-$light-error: #FF1943;
+$light-primary: #2B86EF;
+$light-secondary: $light-global-color-2;
+$light-info: #2F4253;
+$light-success: #42A380;
+$light-warning: #BF9348;
+$light-danger: #F44336;
 
+$light-light: #f8f9fc;
+$light-dark: #30353C;
+$light-black: #111315;
+$light-error: #FF1943;
 $light-white: #fff;
 $light-gray: #858796;
 $light-gray-dark: #5a5c69;
@@ -37,21 +40,23 @@ $light-primary-border-color-focus: #2653d4;
 $light-primary-bg-color-hover: #2e59d9;
 $light-primary-boder-color-hover: #2653d4;
 
+$light-p-color-btn-default: $light-gray;
 
-
-$light-p-color-btn-default: #858796;
-
-$light-very-light-pink: #414141cb;
 $light-text-input-field: #F7F7F7;
 $light-hospital-green: #ACD9B2;
-
 $light-bg-header-topbar: #ffffff;
 $light-bg-sidebar: #19FF8F;
 
 // $light-bg-login: linear-gradient(-135deg, #FFDE00 0%, #19FF8F 100%);
 $light-bg-login: linear-gradient(-135deg, #313131 0%, #3d3d3d 100%);
+$light-bg-contain: #ffffff;
 
 // DARK
+$dark-global-color-1: #F4F3E8;
+$dark-global-color-2: #6490AD;
+$dark-global-color-3: #2A86FF;
+$dark-global-color-4: #69628C;
+$dark-global-color-5: #2F4253;
 
 $dark-primary: #E64D2B;
 $dark-secondary: #858796;
@@ -95,5 +100,8 @@ $font-family-raleway : 'Raleway', sans-serif;
 $font-family-vollkorn : 'Vollkorn', serif;
 
 $header-height: 56px;
-$sidebar-width: 244px;
-$sidebar-min-width: 244px;
+$sidebar-width: 260px;
+$sidebar-min-width: 260px;
+
+
+// 

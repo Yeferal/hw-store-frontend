@@ -1,13 +1,55 @@
 @import 'variables';
 
 .light-theme {
+    --global-color-1: #{$light-global-color-1};
+    --global-color-2: #{$light-global-color-2};
+    --global-color-3: #{$light-global-color-3};
+    --global-color-4: #{$light-global-color-4};
+    --global-color-5: #{$light-global-color-5};
+
     --primary-color: #{$light-primary};
     --secondary-color: #{$light-secondary};
+    --success-color: #{$light-success};
+    --info-color: #{$light-info};
+    --warning-color: #{$light-warning};
+    --danger-color: #{$light-danger};
+    --light-color: #{$light-light};
+    --dark-color: #{$light-dark};
+    --black-color: #{$light-black};
+    --error-color: #{$light-error};
 
-    --bg-login: #{$light-bg-login};
+    --white-color: #{$light-white};
+    --gray-color: #{$light-gray};
+    --gray-dark-color: #{$light-gray-dark};
+
+    --primary-bg-color-focus: #{$light-primary-bg-color-focus};
+    --primary-border-color-focus: #{$light-primary-border-color-focus};
+    --primary-bg-color-hover: #{$light-primary-bg-color-hover};
+    --primary-boder-color-hover: #{$light-primary-boder-color-hover};
+
+    --p-color-btn-default: #{$light-p-color-btn-default};
+    --text-input-field: #{$light-text-input-field};
+    --hospital-green: #{$light-hospital-green};
+
+    --bg-header-topbar: #{$light-bg-header-topbar};
+    --bg-sidebar: #{$light-bg-sidebar};
+
+    --bg-color-login: #{$light-bg-login};
+    --bg-color-contain: #{$light-bg-contain};
+
+    --font-family-primary: #{$font-family-Nunito};
+    --font-family-secondary: #{$font-family-pt-sans};
+    --font-family-primary_sec: #{$font-family-raleway};
+    --font-family-secondary_sec: #{$font-family-vollkorn};
 }
 
 .dark-theme {
     --primary-color: #{$dark-primary};
     --secondary-color: #{$dark-secondary};
+
+
+    --font-family-primary: #{$font-family-cormorant};
+    --font-family-secondary: #{$font-family-fira-sans};
+    --font-family-primary_sec: #{$font-family-roboto};
+    --font-family-secondary_sec: #{$font-family-lora};
 }
