@@ -1,0 +1,43 @@
+@if (dataTextfield) {
+    <div class="textfield">
+        <label class="input-label">
+            <span>{{dataTextfield.label}}</span>
+            @if (dataTextfield.isRequired) {
+                <span class="color-danger">*</span>
+            }
+        </label>
+        @if (!dataTextfield.isSelectList) {
+            @if (dataTextfield.type=='password') {
+                <input [type]="passwordType" 
+                    [name]="dataTextfield.name"
+                    [id]="dataTextfield.name"
+                    [class.input-password]="dataTextfield.type=='password'"
+                    [value]="dataTextfield.value"
+                    [placeholder]="dataTextfield.placeholder"
+                    [disabled]="dataTextfield.disabled"
+                    [readOnly]="dataTextfield.readonly"
+                    [required]="dataTextfield.isRequired"
+                >
+                @if (showPassword) {
+                    <span class="icon-pass" (click)="setPassword()"><fa-icon [icon]="iconEye"></fa-icon></span>
+                } @else {
+                    <span class="icon-pass" (click)="setPassword()"><fa-icon [icon]="iconEyeSlash"></fa-icon></span>
+                }
+            } @else {
+                <input [type]="dataTextfield.type" 
+                    [name]="dataTextfield.name"
+                    [id]="dataTextfield.name"
+                    [class.input-text]="dataTextfield.type=='text'"
+                    [class.input-number]="dataTextfield.type=='number'"
+                    [class.input-password]="dataTextfield.type=='password'"
+                    [value]="dataTextfield.value"
+                    [placeholder]="dataTextfield.placeholder"
+                    [disabled]="dataTextfield.disabled"
+                    [readOnly]="dataTextfield.readonly"
+                    [required]="dataTextfield.isRequired"
+                >
+            }
+        }
+        <ng-content class="legend"></ng-content>
+    </div>
+}

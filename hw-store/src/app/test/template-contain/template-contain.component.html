@@ -1,0 +1,343 @@
+<div class="row justify-content-md-center align-items-md-center mt-4">
+    <div class="col-xl-12 col-lg-12 mb-4">
+        <section class="card shadow-sm">
+            <div class="card-header">
+                <h1 class="h5 font-weight-bold text-primary">INPUTS</h1>
+            </div>
+            <div class="card-body">
+                <h2 >Formularios</h2>
+                <div class="row">
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label for="name" class="input-label">
+                                <span>Required</span>
+                                <span class="color-danger">*</span>
+                            </label>
+                            <input type="text" class="input-text" name="name" id="name" [value]="'Hellow World!'" [placeholder]="'Required'">
+                        </div>
+                    </div>
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label for="name" class="input-label">
+                                <span>Disabled</span>
+                            </label>
+                            <input type="text" class="input-text" name="name" id="name" [value]="'Hellow World!'" [disabled]="true" [placeholder]="'Disabled'">
+                        </div>
+                    </div>
+                    <div class="col-3 mb-4">
+                        <div class="textfield">
+                            <label for="password" class="input-label">
+                                <span>Password</span>
+                            </label>
+                            <input type="password" class="input-password" name="password" id="password" [placeholder]="'Password'">
+                            <span class="icon-pass"><fa-icon [icon]="iconEyeSlash"></fa-icon></span>
+                        </div>
+                    </div>
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label for="name" class="input-label">
+                                <span>ReadOnly</span>
+                            </label>
+                            <input type="text" class="input-text" name="name" id="name" [readOnly]="true" [placeholder]="'Read Only'">
+                        </div>
+                    </div>
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label for="number" class="input-label">
+                                <span>Number</span>
+                            </label>
+                            <input type="number" class="input-number" name="name" id="name" [placeholder]="'Number'">
+                        </div>
+                    </div>
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label for="search" class="input-label">
+                                <span>Search field</span>
+                            </label>
+                            <input type="search" class="input-search" name="search" id="search" [placeholder]="'Search field'">
+                        </div>
+                    </div>
+                    
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label for="text" class="input-label">
+                                <span>Helper text</span>
+                                <span class="color-danger">*</span>
+                            </label>
+                            <input type="text" class="input-text" name="text" id="text" [value]="'Default Value'" placeholder="Helper text">
+                            <div class="legend">
+                                <p class="helper-text helper-text-visible text-danger">Some importante text</p>
+                                <p class="helper-text helper-text-visible text-success">Error/State message</p>
+                                <p class="helper-text helper-text-visible text-info">Error/State message</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>SelectList</h2>
+                <div class="row">
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <label class="input-label">
+                                <span>Select</span>
+                            </label>
+                            <div class="custom-select">
+                                <select class="select-list">
+                                    <option value="1">1</option>
+                                    <option value="abc">abc</option>
+                                    <option value="xyz">xyz</option>
+                                    <option value="abb">abb</option>
+                                    <option value="xydd">xydd</option>
+                                </select>
+                            </div>
+                            <div class="legend">
+                                <p class="helper-text helper-text-visible">Some importante text</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Switches</h2>
+                <div class="row">
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="checkbox" class="input-switch"/>
+                        </div>
+                    </div>
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="checkbox" class="input-switch"/>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Checkbox</h2>
+                <div class="row">
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="checkbox" class="input-checkbox"/>
+                        </div>
+                    </div>
+
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="checkbox" class="input-checkbox checkbox-primary"/>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Radio</h2>
+                <div class="row">
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="radio" class="input-radio"/>
+                            <label class="input-label-radio">
+                                <span>Female</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="radio" class="input-radio"/>
+                            <label class="input-label-radio">
+                                <span>Male</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="radio" class="input-radio"/>
+                            <label class="input-label-radio">
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-auto mb-4">
+                        <div class="textfield">
+                            <input type="radio" class="input-radio" disabled/>
+                            <label class="input-label-radio">
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-xl-12 col-lg-12 mb-4">
+        <section class="card shadow-sm">
+            <div class="card-header">
+                <h1 class="text-primary">BOTONES</h1>
+            </div>
+            <div class="card-body">
+                <h2>Botones</h2>
+                <div class="row">
+                    <div class="col-auto">
+                        <button class="btn">Button</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary mb-4">Primary</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-secondary mb-4">Secondary</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success mb-4">Success</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-info mb-4">Info</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-warning mb-4">Warning</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-danger mb-4">Danger</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-sm mb-4">.btn-sm</button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-lg mb-4"><span >.btn-lg</span></button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-primary btn-block mb-4"><span >.btn-block</span></button>
+                    </div>
+                </div>
+
+                <h2>Botones Icon</h2>
+                <div class="row">
+                    <div class="col-auto">
+                        <button class="btn btn-icon btn-sm color-danger">
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-icon btn-sm">
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-success btn-icon btn-lg">
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-warning btn-icon btn-block">
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-icon">
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-icon">
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                            <span class="text ml-1">Editar</span>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-primary btn-icon">
+                            <span class="text mr-1">Editar</span>
+                            <span class="icon">
+                                <fa-icon [icon]="iconEdit"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<div class="card card-w100 shadow-sm mt-4">
+    <div class="card-header">
+        <h1 class="h4 font-weight-bold text-primary">Este es el Titulo</h1>
+    </div>
+    <div class="card-body p-0">
+        <div class="container-table table-responsive table-hover">
+            <table class="table mb-4" id="dataTable">
+                <thead>
+                    <tr>
+                        <th class="text-left"><input type="checkbox"/></th>
+                        <th class="text-left">Order Details</th>
+                        <th class="text-left">Order ID</th>
+                        <th class="text-left">Source</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @for (order of cryptoOrders; track order.id) {
+                        <tr>
+                            <td><input type="checkbox"/></td>
+                            <td data-title='Order Details'>{{order.id}}</td>
+                            <td data-title="Order ID">{{order.orderID}}</td>
+                            <td data-title="Source">{{order.sourceName}}</td>
+                            <td data-title="Amount">
+                                <span class="d-inline-block typography-body1 gutters-bottom text-wrap">
+                                    Tipografia Body1 {{order.amount}}
+                                </span>
+                                <span class="d-inline-block typography-body2 text-wrap">
+                                    Tipografia Body2 {{order.amountCrypto}}
+                                </span>
+                            </td>
+                            <td data-title="Status">{{order.status}}</td>
+                            <td  >
+                                <button class="btn btn-primary btn-sqr btn-sm">
+                                    <span class="icon">
+                                        <fa-icon [icon]="iconEdit"></fa-icon>
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                    
+
+                </tbody>
+            </table>
+            <!-- CONTENEDOR DE LA PAGINACION -->
+            <div class="d-flex flex-column justify-content-center align-items-center p-2 mb-2">
+                <div class="mb-1">
+                    <span class="typography-body2">Monstrando 1-5 de 10</span>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center p-1">
+                    <div>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1"><fa-icon [icon]="iconArrowLeft"></fa-icon></button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary btn-sqr btn-sm mr-1">1</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1">2</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1">3</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1">4</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-light btn-sqr btn-sm"><fa-icon [icon]="iconArrowRight"></fa-icon></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

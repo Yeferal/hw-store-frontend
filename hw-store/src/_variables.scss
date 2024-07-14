@@ -24,8 +24,18 @@ $light-primary: #2B86EF;
 $light-secondary: $light-global-color-2;
 $light-info: #2F4253;
 $light-success: #42A380;
-$light-warning: #BF9348;
+$light-warning: #f6c23e;
 $light-danger: #F44336;
+
+
+$light-primary-active: #1276EF;
+$light-secondary-active: #4880AD;
+$light-info-active: #213253;
+$light-success-active: #23a374;
+$light-warning-active: #ffbf1d;
+$light-danger-active: #fb2516;
+
+$light-primary-gradient: linear-gradient(-135deg, #2B86EF 0%, #4995eb 50%, #8ebbee 100%);
 
 $light-light: #f8f9fc;
 $light-dark: #30353C;
@@ -34,6 +44,8 @@ $light-error: #FF1943;
 $light-white: #fff;
 $light-gray: #858796;
 $light-gray-dark: #5a5c69;
+
+$light-light-active: #e7e7e7;
 
 $light-primary-bg-color-focus: #2e59d9;
 $light-primary-border-color-focus: #2653d4;

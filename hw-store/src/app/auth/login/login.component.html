@@ -1,35 +1,78 @@
 
-<!-- BACKGROUND -->
 <div class="bg-login">
-    <!-- FORM AND LOGIN -->
-    <div class="card-login">
-        <!-- IMAGE LOG -->
-        <div class="col-left">
-            <div class="login-img">adfad</div>
+    <div class="card col-xl-4 col-lg-5 col-md-5 col-sm-8 col-10 shadow p-4 positionz-card-login">
+        <div class="row flex-column justify-content-center align-items-center mb-2">
+            <h1 class="text-capitalize">Bienvenido a HW-Store</h1>
+            <h2 class="h4">Inicia Sesion</h2>
         </div>
-        <!-- FORM -->
-        <div class="col-right">
-            <div>
-                <h1>¡Rehobot!</h1>
-                <h2>Ferreteria</h2>
+        <form class="row justify-content-center align-items-center mb-4" [formGroup]="userForm">
+            <div class="row justify-content-center align-items-center mb-4">
+                <div class="col-10 col-sm-10 mb-4">
+                    <div class="textfield">
+                        <label for="username" class="input-label">
+                            <span>Username</span>
+                        </label>
+                        <input type="text" class="input-text" formControlName="username" name="username" id="username" placeholder="Username"
+                        [class.is-invalid]="userForm.get('username')?.errors && (userForm.get('username')?.touched || isFormSubmitted)"
+                        [class.is-valid]="!userForm.get('username')?.errors && userForm.get('username')?.touched"
+                        >
+                        <div class="legend">
+                            <p class="helper-text color-danger"
+                            [class.helper-text-visible]="userForm.get('username')?.errors && (userForm.get('username')?.touched || isFormSubmitted) && userForm.get('username')?.hasError('required')"
+                            >El campo es Obligatorio</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 mb-4">
+                    <div class="textfield">
+                        <label for="password" class="input-label">
+                            <span>Contraseña</span>
+                        </label>
+                        <input [type]="passwordType" class="input-password" formControlName="password" name="password" id="password" placeholder="Contraseña"
+                        [class.is-invalid]="userForm.get('password')?.errors && (userForm.get('password')?.touched || isFormSubmitted)"
+                        [class.is-valid]="!userForm.get('password')?.errors && userForm.get('password')?.touched"
+                        >
+                        @if (showPassword) {
+                            <span class="icon-pass" (click)="setPassword()"><fa-icon [icon]="iconEye"></fa-icon></span>
+                        } @else {
+                            <span class="icon-pass" (click)="setPassword()"><fa-icon [icon]="iconEyeSlash"></fa-icon></span>
+                        }
+                        <div class="legend">
+                            <p class="helper-text color-danger"
+                            [class.helper-text-visible]="userForm.get('password')?.errors && (userForm.get('password')?.touched || isFormSubmitted) && userForm.get('password')?.hasError('required')"
+                            >El campo es Obligatorio</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-10 col-sm-108 ">
+                    <button class="btn btn-primary btn-block" (click)="onSubmit()" [disabled]="userForm.invalid">Iniciar Sesion</button>
+                </div>
             </div>
-            <!-- FORM -->
-            <div>
-                <form>
-                    <div>
-                        <input type="text" name="" id="">
-                        <label for="">Username</label>
-                    </div>
-                    <div>
-                        <input type="password" name="" id="">
-                        <label for="">Contraseña</label>
-                    </div>
-                    <div>
-                        <button type="button">Iniciar Sesion</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        
+        </form>
     </div>
+    <!-- LEFT SQUARES -->
+    <div class="square-1"></div>
+    <div class="square-3"></div>
+    <!-- <div class="square-9"></div> -->
+    
+    <!-- BOTTOM SQUARES -->
+    <div class="square-2"></div>
+    <div class="square-4"></div>
+    <div class="square-5"></div>
+    <div class="square-6"></div>
+    <div class="square-7"></div>
+    <div class="square-8"></div>
+    <!-- <div class="square-10"></div> -->
+
+    <!-- RIGHT SQUARES -->
+    <!-- <div class="square-14"></div> -->
+    <div class="square-16"></div>
+    <div class="square-18"></div>
+    <!-- <div class="square-11"></div> -->
+    <!-- <div class="square-12"></div> -->
+    <!-- <div class="square-13"></div> -->
+    <!-- <div class="square-15"></div> -->
+    <!-- <div class="square-17"></div> -->
+    <!-- <div class="square-19"></div> -->
+    <!-- <div class="square-20"></div> -->
 </div>

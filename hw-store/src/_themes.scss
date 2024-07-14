@@ -13,7 +13,16 @@
     --info-color: #{$light-info};
     --warning-color: #{$light-warning};
     --danger-color: #{$light-danger};
+
+    --primary-color-active: #{$light-primary-active};
+    --secondary-color-active: #{$light-secondary-active};
+    --success-color-active: #{$light-success-active};
+    --info-color-active: #{$light-info-active};
+    --warning-color-active: #{$light-warning-active};
+    --danger-color-active: #{$light-danger-active};
+    
     --light-color: #{$light-light};
+    --light-color-active: #{$light-light-active};
     --dark-color: #{$light-dark};
     --black-color: #{$light-black};
     --error-color: #{$light-error};
