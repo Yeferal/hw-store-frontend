@@ -2,11 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoadSpinnerComponent } from './shared/components/load-spinner/load-spinner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FontAwesomeModule],
+  imports: [RouterOutlet, FontAwesomeModule, LoadSpinnerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

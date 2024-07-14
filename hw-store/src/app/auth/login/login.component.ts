@@ -53,6 +53,7 @@ export class LoginComponent {
     this.authService.postAuth(this.userForm.value).subscribe({
       next: (res) => {
         this.tokenService.setToken(res.accessToken);
+        this.router.navigate(['/home']);
       },
       error: (err) => { console.log(err); }
     });

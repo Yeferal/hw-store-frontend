@@ -1,0 +1,133 @@
+.container-preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background-color: rgb(0, 0, 0, 0.5);
+}
+
+
+.loading-six {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: width 0.2s ease-in, 
+                height 0.2s ease-in;
+    // background-color: rgb(253, 209, 98);
+}
+
+.loading-six .circle-1,
+.loading-six .circle-2,
+.loading-six .circle-3, 
+.loading-six .circle-4,
+.loading-six .circle-5,
+.loading-six .circle-6,
+.loading-six .circle-7,
+.loading-six .circle-8 {
+    position: absolute;
+    z-index: 100;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+    border: 1px solid rgba(58,59,69,.15);
+    background-color: #2B86EF;
+    cursor: pointer;
+}
+
+@media (min-width: 576px) {
+    .loading-six {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .loading-six {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .loading-six {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.loading-six .circle-1 {
+    top: 0;
+    right: 40%;
+}
+
+.loading-six .circle-2 {
+    top: 12%;
+    right: 12%;
+}
+
+.loading-six .circle-3 {
+    top: 40%;
+    right: 0;
+}
+
+.loading-six .circle-4 {
+    bottom: 12%;
+    right: 12%;
+}
+
+.loading-six .circle-5 {
+    bottom: 0;
+    right: 40%;
+}
+
+.loading-six .circle-6 {
+    bottom: 12%;
+    left: 12%;
+}
+
+.loading-six .circle-7 {
+    top: 40%;
+    left: 0;
+}
+
+.loading-six .circle-8 {
+    top: 12%;
+    left: 12%;
+}
+
+
+.loading-six .circle-1,
+.loading-six .circle-3,
+.loading-six .circle-5,
+.loading-six .circle-7 {
+    animation: move-1 0.3s linear infinite alternate both;
+}
+
+
+.loading-six .circle-2,
+.loading-six .circle-4,
+.loading-six .circle-6,
+.loading-six .circle-8 {
+    animation: move-1 0.3s linear 0.3s infinite alternate both;
+}
+
+@keyframes move-1 {
+    0% {
+        transform: scale(0.75);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+        opacity: 0.75;
+    } 
+  
+    100% {
+        transform: scale(1.25);
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+        opacity: 1;
+    }   
+}
