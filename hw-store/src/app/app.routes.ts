@@ -3,7 +3,7 @@ import { TestComponent } from './test/test.component';
 import { authGuard, authMatchGuard } from './core/guards/auth.guard';
 import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
 import { LoginComponent } from './auth/login/login.component';
-import { authLoggedGuard } from './core/guards/auth-logged.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {
@@ -13,9 +13,14 @@ export const routes: Routes = [
     },
     {
         path: 'home',
+        component: DashboardComponent,
+        canActivate: [authGuard],
+        // canMatch: [authMatchGuard]
+    },
+    {
+        path: 'test',
         component: TestComponent,
         canActivate: [authGuard],
-        // canActivate: [authLoggedGuard],
         // canMatch: [authMatchGuard]
     },
     {
@@ -25,6 +30,10 @@ export const routes: Routes = [
     {
         path: '',
         loadChildren: () => import('./auth/auth.routes').then(m => m.AUTH_ROUTES)
+    },
+    {
+        path: 'home/admin',
+        loadChildren: () => import('./dashboard/admin/admin.routes').then(m => m.AUTH_ROUTES)
     },
     
     {

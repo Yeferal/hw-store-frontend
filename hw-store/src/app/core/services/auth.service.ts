@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private tokenKey: string = 'authToken';
 
-  readonly URL_API = GLOBAL_API.API_AUTH
+  readonly URL_API = GLOBAL_API.API_AUTH;
 
   constructor(private http: HttpClient) { }
 

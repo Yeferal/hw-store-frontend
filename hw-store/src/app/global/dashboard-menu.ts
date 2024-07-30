@@ -12,35 +12,37 @@ export let menuLinks: Array<SectionMenu> = [
     {
         id: 1,
         section: 'Tienda',
+        roles: ['ADMIN', 'RECEPTIONIST'],
         subSections: [
             {
                 id: 1,
                 name: 'Ventas',
                 credentials: ['ADMIN'],
-                show: true,
+                show: false,
                 icon: iconFaShop,
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/home/sales',
                         selected: false,
                         name: 'Realizar Venta'
                     },
                     {
                         id: 2,
-                        link: '',
+                        // link: '/store/test',
+                        link: '/sales/modify-sales',
                         selected: false,
                         name: 'Modificar Venta'
                     },
                     {
                         id: 3,
-                        link: '',
+                        link: '/sales/refound-products',
                         selected: false,
                         name: 'Reintegrar Producto'
                     },
                     {
                         id: 4,
-                        link: '',
+                        link: '/sales/suggestions',
                         selected: false,
                         name: 'Sugerencias'
                     },
@@ -55,19 +57,19 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/orders',
                         selected: false,
                         name: 'Realizar Pedido'
                     },
                     {
                         id: 2,
-                        link: '',
+                        link: '/orders/modify-orders',
                         selected: false,
                         name: 'Modificar Pedido'
                     },
                     {
                         id: 3,
-                        link: '',
+                        link: '/orders/pending-orders',
                         selected: false,
                         name: 'Lista de Pedidos Pendientes'
                     }
@@ -82,7 +84,7 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/clients/pay-pendign',
                         selected: false,
                         name: 'Pendientes de Pago'
                     },
@@ -93,6 +95,7 @@ export let menuLinks: Array<SectionMenu> = [
     {
         id: 2,
         section: 'Productos',
+        roles: ['ADMIN', 'OPERATOR'],
         subSections: [
             {
                 id: 1,
@@ -103,13 +106,13 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/products',
                         selected: false,
                         name: 'Lista de Productos'
                     },
                     {
                         id: 2,
-                        link: '',
+                        link: '/products/search',
                         selected: false,
                         name: 'Buscar Productos'
                     }
@@ -120,6 +123,7 @@ export let menuLinks: Array<SectionMenu> = [
     {
         id: 3,
         section: 'Administracion',
+        roles: ['ADMIN'],
         subSections: [
             {
                 id: 1,
@@ -130,19 +134,19 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/home/admin/admin-users',
                         selected: false,
                         name: 'Administrar Usuarios'
                     },
                     {
                         id: 2,
-                        link: '',
+                        link: '/home/admin/add-users',
                         selected: false,
                         name: 'Agregar Usuario'
                     },
                     {
                         id: 3,
-                        link: '',
+                        link: '/home/admin/users',
                         selected: false,
                         name: 'Lista Usuarios'
                     }
@@ -157,43 +161,43 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/home/admin/report/sales',
                         selected: false,
                         name: 'Reporte de Ventas'
                     },
                     {
                         id: 2,
-                        link: '',
+                        link: '/home/admin/report/sales-for-user',
                         selected: false,
                         name: 'Reporte de Ventas por Usuario'
                     },
                     {
                         id: 3,
-                        link: '',
+                        link: '/home/admin/report/sales-for-client',
                         selected: false,
                         name: 'Reporte de Ventas por Cliente'
                     },
                     {
                         id: 4,
-                        link: '',
+                        link: '/home/admin/report/clients',
                         selected: false,
                         name: 'Reporte de Clientes'
                     },
                     {
                         id: 5,
-                        link: '',
+                        link: '/home/admin/report/orders',
                         selected: false,
                         name: 'Reporte de Pedidos'
                     },
                     {
                         id: 6,
-                        link: '',
+                        link: '/home/admin/report/logs',
                         selected: false,
                         name: 'Reporte de Logs'
                     },
                     {
                         id: 7,
-                        link: '',
+                        link: '/home/admin/report',
                         selected: false,
                         name: 'Reporte General'
                     }
@@ -208,37 +212,37 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '',
+                        link: '/home/admin/inventory/inventory',
                         selected: false,
                         name: 'Inventario'
                     },
                     {
                         id: 2,
-                        link: '',
+                        link: '/home/admin/inventory/add-products',
                         selected: false,
                         name: 'Agregar Producto'
                     },
                     {
                         id: 3,
-                        link: '',
+                        link: '/home/admin/inventory/income-products',
                         selected: false,
                         name: 'Ingreso de Productos'
                     },
                     {
                         id: 4,
-                        link: '',
+                        link: '/home/admin/inventory/products-delivery',
                         selected: false,
                         name: 'Productos de Entrega'
                     },
                     {
                         id: 5,
-                        link: '',
+                        link: '/home/admin/inventory/categories',
                         selected: false,
                         name: 'Categorias'
                     },
                     {
                         id: 6,
-                        link: '',
+                        link: '/home/admin/inventory/brands',
                         selected: false,
                         name: 'Marcas'
                     }

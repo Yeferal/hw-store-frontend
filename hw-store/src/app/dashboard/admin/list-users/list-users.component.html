@@ -1,0 +1,209 @@
+<form class="row p-4 " [formGroup]="filterForm">
+    <div class="col-12 col-md-6 mb-4">
+        <div class="row align-items-end justify-content-center justify-content-md-start">
+            <div class="col-6 col-lg-4">
+                <div class="textfield">
+                    <label for="search" class="input-label">Buscar</label>
+                    <input type="search" formControlName="searchValue" name="search" id="search" placeholder="Buscar">
+                </div>
+            </div>
+            <div class="col-auto pl-0">
+                <!-- <button class="btn btn-success">Buscar</button> -->
+                <button class="btn btn-success btn-icon" (click)="getAccounts()">
+                    <fa-icon [icon]="iconSearch"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="row flex-row-reverse flex-md-row align-items-end justify-content-center justify-content-md-end">
+            <div class="col-auto">
+                <!-- <button class="btn btn-primary btn-block">Filtrar</button> -->
+                <button class="btn btn-success btn-icon" (click)="getAccountFilter()">
+                    <fa-icon [icon]="iconFilter"></fa-icon>
+                </button>
+            </div>
+
+            <div class="col-auto">
+                <div class="textfield">
+                    <label class="input-label">Ordenar Por</label>
+                    <div class="custom-select">
+                        <select class="select-list" formControlName="sortField">
+                            <!-- <option disabled selected>Ordenar Por</option> -->
+                            <option value="id">Id</option>
+                            <option value="username">Username</option>
+                            <!-- <option value="fistname">Nombre</option>
+                            <option value="lastname">Apellido</option> -->
+                            <!-- <option value="role">name</option> -->
+                            <option value="verified">Verificado</option>
+                            <option value="state">Estado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="textfield">
+                    <label class="input-label">Sentido</label>
+                    <div class="custom-select">
+                        <select class="select-list" formControlName="sortOrder">
+                            <!-- <option disabled selected>Ordenar De</option> -->
+                            <option value="ASC">A a Z</option>
+                            <option value="DESC">Z a A</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="textfield">
+                    <label class="input-label">Mostrar</label>
+                    <div class="custom-select">
+                        <select class="select-list" formControlName="size">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <!-- <option value="xydd">Role</option> -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</form>
+
+<div class="container-table table-responsive-lg table-card-md table-hover">
+    <table class="table mb-4" >
+        <thead>
+            <tr>
+                <th class="text-left">id</th>
+                <th class="text-left">username</th>
+                <th class="text-left">nombre</th>
+                <th class="text-left">apellido</th>
+                <th class="text-center">verificado</th>
+                <th class="text-center">estado</th>
+                <th class="text-center">roles</th>
+                <th class="text-right">Options</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for (item of accountList; track item.id) {
+                <tr>
+                    <td class="text-left" data-label="Id">{{item.id}}</td>
+                    <td class="text-left" data-label="Username">{{item.username}}</td>
+                    <td class="text-left" data-label="nombre">
+                        <span class="typography-body1 text-wrap">
+                            {{item.userProfile?.firstName}}
+                        </span>
+                    </td>
+                    <td class="text-left" data-label="apellido">
+                        <span class="typography-body2 text-wrap">
+                            {{item.userProfile?.lastName}}
+                        </span>
+                    </td>
+                    <td class="text-center" data-label="verificado">
+                        <span class="text-wrap m-0"
+                        [class.text-box-danger]="!item.verified"
+                        [class.text-box-success]="item.verified">
+                            {{item.verified? 'Verificado':'Sin Verificar'}}
+                        </span>
+                    </td>
+                    <td class="text-center" data-label="estado">
+                        <span class="typography-body3 text-wrap m-0"
+                        [class.text-box-danger]="!item.active"
+                        [class.text-box-success]="item.active"
+                        >
+                            {{item.active? 'Activo':'Desactivado'}}
+                        </span>
+                    </td>
+                    <td class="text-center"
+                    data-label="roles">
+                    <div class="row flex-row flex-md-column justify-content-start justify-content-md-center align-items-center">
+                        @if (item.assignmentRoleList) {
+                            @for (roleItem of item.assignmentRoleList; track $index) {
+                                <div class="col-auto"
+                                [class.mb-2]="item.assignmentRoleList.length > 1 && $index != (item.assignmentRoleList.length-1)">
+                                    <span class="typography-body1 text-wrap m-2"
+                                    [class.text-box-primary]="roleItem.role?.name=='ADMIN'"
+                                    [class.text-box-secondary]="roleItem.role?.name=='OPERATOR'"
+                                    [class.text-box-info]="roleItem.role?.name=='RECEPTIONIST'"
+                                    [class.text-box-warning]="roleItem.role?.name=='CLIENT'"
+                                    >{{roleItem.role?.name}}</span>
+                                </div>
+                            }
+                        }
+                    </div>
+                    </td>
+                    <td class="text-right" data-label="Opciones">
+                        <div class="row flex-row align-items-center justify-content-end">
+                            <button class="btn btn-icon btn-sm color-primary mr-1 p-2">
+                                <span class="icon">
+                                    <fa-icon [icon]="iconInfo"></fa-icon>
+                                </span>
+                            </button>
+                            <button class="btn btn-icon btn-sm color-secondary mr-1 p-2">
+                                <span class="icon">
+                                    <fa-icon [icon]="iconEdit"></fa-icon>
+                                </span>
+                            </button>
+                            <button class="btn btn-icon btn-sm color-danger p-2">
+                                <span class="icon">
+                                    <fa-icon [icon]="iconDelete"></fa-icon>
+                                </span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (pagePaginate) {
+        <!-- CONTENEDOR DE LA PAGINACION -->
+        <div class="d-flex flex-column justify-content-center align-items-center p-2 mb-2">
+            <div class="mb-1">
+                <span class="typography-body2">Monstrando {{pagePaginate.pageable.offset+1}}-{{pagePaginate.pageable.offset+pagePaginate.numberOfElements}} de {{pagePaginate.totalElements}}</span>
+            </div>
+            <div class="d-flex flex-row justify-content-center align-items-center p-1">
+                <div>
+                    <button class="btn btn-light btn-icon btn-sm mr-1" [disabled]="pagePaginate.first" (click)="getPreviousPage()">
+                        <fa-icon [icon]="iconArrowLeft"></fa-icon>
+                    </button>
+                </div>
+                <div>
+                    @if (pagePaginate.totalPages > 4) {
+                        <!-- @for (item of counter(pagePaginate.totalPages); track $index) {
+                            <button class="btn btn-sqr btn-sm mr-1" [class.btn-primary]="pagePaginate.pageable.pageNumber==pagePaginate.number">1</button>
+                        } -->
+                        <button class="btn btn-primary btn-sqr btn-sm mr-1">1</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1">2</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1">3</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1" [disabled]="true">...</button>
+                        <button class="btn btn-light btn-sqr btn-sm mr-1">4</button>
+                    } @else {
+                        @for (item of counter(pagePaginate.totalPages); track $index) {
+                            <button class="btn btn-sqr btn-sm mr-1" 
+                            [class.btn-primary]="$index==pagePaginate.number"
+                            [class.btn-light]="$index!=pagePaginate.number"
+                            [disabled]="$index==pagePaginate.number"
+                            (click)="getPage($index)"
+                            >{{$index+1}}</button>
+                        }
+                    }
+                    
+                </div>
+                <div>
+                    <button class="btn btn-light btn-icon btn-sm" [disabled]="pagePaginate.last" (click)="getNexPage()">
+                        <fa-icon [icon]="iconArrowRight"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faAngleDown, faAngleRight, faBoxes, faChartBar, faSearch, faShoppingCart, faTruck, faUserFriends, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { menuLinks } from '../../../global/dashboard-menu';
 import { LinkMenu, SectionMenu, SubSectionMenu } from '../../../global/object-menu';
+import { TokenService } from '../../../core/services/token.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
 
   menuLinks: Array<SectionMenu> = menuLinks;
   linkSelectedPath: Array<number> = [];
   linkSelected: LinkMenu | null = null;
+  roles: Array<string> = [];
 
   showSidebar = false;
 
@@ -28,6 +31,20 @@ export class SidebarComponent {
   iconFaUser = faUserFriends;
   iconFaReports = faChartBar;
   iconFaInventoryAdmin = faWarehouse;
+
+  constructor (private tokenService: TokenService) { }
+
+  ngOnInit(): void {
+    this.roles = this.tokenService.getRoles();
+  }
+
+  containsRoles(arr: string[]): boolean {
+    if (this.roles.length == 0) {
+      return false;
+    }
+    
+    return arr.some(element => this.roles.includes(element));
+  }
 
   toggleSidebar(){
     this.showSidebar = !this.showSidebar;

@@ -1,0 +1,33 @@
+@if(showModal){
+    <div class="modal-container" 
+        [class.align-items-start]="alignItems=='start'"
+        [class.align-items-center]="alignItems=='center'"
+        [class.align-items-end]="alignItems=='end'" 
+        (click)="onBackdropClick($event)">
+    
+        <div class="modal shadow-lg"
+        [class]="sizeTag"
+        (click)="$event.stopPropagation()">
+    
+            @if(showTitle) {
+                <div class="modal-header justify-content-center align-items-center mb-4">
+                    <h1 class="h4 font-weight-bold justify-content-center color-primary">{{title}}</h1>
+                </div>
+            }
+            <ng-content select=".modal-header-content"></ng-content>
+            
+            <div class="modal-body mb-4">
+                <ng-content></ng-content>
+            </div>
+    
+            @if(showFooter) {
+                <div class="modal-footer justify-content-end">
+                    <button class="btn btn-danger btn-sm" (click)="closeModal()">Cerrar</button>
+                </div>
+            }
+            <ng-content select=".modal-footer-content"></ng-content>
+            
+        </div>
+        
+    </div>
+}

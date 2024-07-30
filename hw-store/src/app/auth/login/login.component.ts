@@ -21,6 +21,7 @@ export class LoginComponent {
 
   showPassword = false;
   passwordType = 'password'
+  showMsgError = false;
 
   userForm: FormGroup = new FormGroup({
     username: new FormControl('Admin',Validators.required),
@@ -53,9 +54,11 @@ export class LoginComponent {
     this.authService.postAuth(this.userForm.value).subscribe({
       next: (res) => {
         this.tokenService.setToken(res.accessToken);
+        this.showMsgError = false;
         this.router.navigate(['/home']);
       },
-      error: (err) => { console.log(err); }
+      error: (err) => { 
+        this.showMsgError = true; }
     });
     
   }

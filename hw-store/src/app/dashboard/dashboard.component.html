@@ -1,0 +1,55 @@
+<main>
+    <div>
+        <app-topbar/>
+        <app-sidebar/>
+
+        <!-- CONTENT -->
+        <div class='content-wrapper d-flex flex-column'>
+            <div class="content">
+                <div class="container-fluid">
+                    <!-- Home -->
+                    <!-- <button (click)="show()">Mostrar</button> -->
+                    <!-- <app-template-contain class="container-fluid p-0"/> -->
+    
+                    <!-- <div class="row row-100 bg-success justify-content-md-center align-items-md-center">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <section class="card card-w100">
+                                <div class="card-header">
+                                    <h1 class="h5 font-weight-bold text-primary">INPUTS</h1>
+                                </div>
+                                <div class="card-body">
+                                    <h2 >Formularios</h2>
+                                </div>
+                            </section>
+                        </div>
+                    </div> -->
+    
+    
+                     <ng-content ></ng-content>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- <app-modal
+    [title]="'Hola'"
+    [showTitle]="true"
+    [alignItems]="'center'"
+    [sizeTag]="'col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4'"
+    [isAutoClose]="true"
+    #modal >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates corrupti eum in odit ut 
+        vero deserunt molestiae nemo illo sit iusto neque, ratione ab atque quibusdam similique, 
+        libero quos nostrum!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates corrupti eum in odit ut 
+        vero deserunt molestiae nemo illo sit iusto neque, ratione ab atque quibusdam similique, 
+        libero quos nostrum!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates corrupti eum in odit ut 
+        vero deserunt molestiae nemo illo sit iusto neque, ratione ab atque quibusdam similique, 
+        libero quos nostrum!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates corrupti eum in odit ut 
+        vero deserunt molestiae nemo illo sit iusto neque, ratione ab atque quibusdam similique, 
+        libero quos nostrum!
+    </app-modal> -->
+    <!-- <app-modal #modal></app-modal> -->
+</main>

@@ -1,0 +1,120 @@
+
+<div class="row justify-content-center align-items-center mb-4">
+    <div class="col-12 col-md-8">
+        <div class="card shadow">
+            <div class="card-header text-center">
+                <h1 class="h5 font-weight-bold text-primary">Agregar Usuario</h1>
+            </div>
+            <div class="card-body">
+                <form class="row justify-content-center" [formGroup]="userForm">
+                    
+                    
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="textfield">
+                            <label for="firstname" class="input-label">
+                                <span>Nombre</span>
+                            </label>
+                            <input type="text" class="input-text" formControlName="firstname" name="firstname" id="firstname" placeholder="Nombre"
+                            [class.is-invalid]="userForm.get('firstname')?.errors && (userForm.get('firstname')?.touched || isFormSubmitted)"
+                            [class.is-valid]="!userForm.get('firstname')?.errors && userForm.get('firstname')?.touched"
+                            >
+                            <div class="legend">
+                                <p class="helper-text color-danger"
+                                [class.helper-text-visible]="userForm.get('firstname')?.errors && (userForm.get('firstname')?.touched || isFormSubmitted) && userForm.get('firstname')?.hasError('required')"
+                                >El campo es Obligatorio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="textfield">
+                            <label for="lastname" class="input-label">
+                                <span>Apellido</span>
+                            </label>
+                            <input type="text" class="input-text" formControlName="lastname" name="lastname" id="lastname" placeholder="Apellido"
+                            [class.is-invalid]="userForm.get('lastname')?.errors && (userForm.get('lastname')?.touched || isFormSubmitted)"
+                            [class.is-valid]="!userForm.get('lastname')?.errors && userForm.get('lastname')?.touched"
+                            >
+                            <div class="legend">
+                                <p class="helper-text color-danger"
+                                [class.helper-text-visible]="userForm.get('lastname')?.errors && (userForm.get('lastname')?.touched || isFormSubmitted) && userForm.get('lastname')?.hasError('required')"
+                                >El campo es Obligatorio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="textfield">
+                            <label for="role" class="input-label">
+                                <span>Role</span>
+                            </label>
+                            <div class="custom-select">
+                                <select name="role" id="role" class="select-list" formControlName="roleId">
+                                    <option  [disabled]="true" [value]="0" selected>Seleccione un Rol</option>
+                                    @for (item of listRole; track $index) {
+                                        <option  [value]="item.id">{{item.name}}</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="legend">
+                                <p class="helper-text color-danger"
+                                [class.helper-text-visible]="userForm.get('roleId')?.errors && (userForm.get('roleId')?.touched || isFormSubmitted) && userForm.get('roleId')?.hasError('required')"
+                                >El campo es Obligatorio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-4"></div>
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="textfield">
+                            <label for="username" class="input-label">
+                                <span>Username</span>
+                            </label>
+                            <input type="text" class="input-text" formControlName="username" name="username" id="username" placeholder="Username"
+                            [class.is-invalid]="userForm.get('username')?.errors && (userForm.get('username')?.touched || isFormSubmitted)"
+                            [class.is-valid]="!userForm.get('username')?.errors && userForm.get('username')?.touched"
+                            >
+                            <div class="legend">
+                                <p class="helper-text color-danger"
+                                [class.helper-text-visible]="userForm.get('username')?.errors && (userForm.get('username')?.touched || isFormSubmitted) && userForm.get('username')?.hasError('required')"
+                                >El campo es Obligatorio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mb-4">
+                        <div class="textfield">
+                            <label for="password" class="input-label">
+                                <span>Contraseña</span>
+                            </label>
+                            <input type="text" class="input-text" formControlName="password" name="password" id="password" placeholder="Contraseña"
+                            [class.is-invalid]="userForm.get('password')?.errors && (userForm.get('password')?.touched || isFormSubmitted)"
+                            [class.is-valid]="!userForm.get('password')?.errors && userForm.get('password')?.touched"
+                            >
+                            <div class="legend">
+                                <p class="helper-text color-danger"
+                                [class.helper-text-visible]="userForm.get('password')?.errors && (userForm.get('password')?.touched || isFormSubmitted) && userForm.get('password')?.hasError('required')"
+                                >El campo es Obligatorio</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-start mb-4">
+                                <button class="btn btn-secondary">Generar Datos (Username & Contraseña)</button>
+                            </div>
+                            <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end mb-4">
+                                    <button class="btn btn-primary" (click)="onSubmit()">Agregar Usuario</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-modal [isAutoClose]="true" [sizeTag]="'col-auto col-sm-6 col-md-3'" alignItems="center" #modalMsg>
+    <p class="text-wrap text-uppercase">
+        {{msgError}}
+    </p>
+</app-modal>

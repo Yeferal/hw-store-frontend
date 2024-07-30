@@ -1,0 +1,365 @@
+<app-dashboard>
+    <div class="col p-0 mt-4">
+        <div class="card mb-4 shadow">
+            <div class="card-header">
+                <h2 class="h4">Detalle de Producto </h2>
+            </div>
+        @if (product) {
+            <div class="card-body">
+                <div class="row">
+                    <!-- DATA -->
+                    <div class="col-12">
+                        <form class="row justify-content-center" [formGroup]="productForm">
+                            <div class="col-12 mb-4">
+                                <div class="d-flex flex-row justify-content-end">
+                                    <button class="btn btn-success btn-sm" (click)="submitProduct()">Actualizar Datos</button>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="code">Codigo</label>
+                                    <input type="text" name="code" id="code" formControlName="code">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" name="name" id="name" formControlName="name">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="brand">Marca</label>
+                                    <input type="text" name="brand" id="brand" formControlName="brand">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="creationDate">Fecha de Creacion</label>
+                                    <input type="datetime-local" class="disabled" name="creationDate" id="creationDate" formControlName="creationDate">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="creator">Creado Por</label>
+                                    <input type="text" class="disabled" name="creator" id="creator" formControlName="creator">
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="discountType">Tipo de Descuento</label>
+                                    <div class="custom-select">
+                                        <select class="select-list" formControlName="discountType">
+                                            <option [disabled]="true">TIPO DESCUENTO</option>
+                                            <option [value]="'NINGUNO'">NINGUNO</option>
+                                            <option [value]="'PORCENTUAL'">PORCENTUAL %</option>
+                                            <option [value]="'FIJO'">FIJO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="discount">Descuento</label>
+                                    <input type="number" name="discount" id="discount" formControlName="discount">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="minAmount">Minimo Stock</label>
+                                    <input type="number" name="minAmount" id="minAmount" formControlName="minAmount">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="previousPrice">Precio Anterior</label>
+                                    <input type="number" name="previousPrice" id="previousPrice" formControlName="previousPrice">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="purchasePrice">Precio de Compra</label>
+                                    <input type="number" name="purchasePrice" id="purchasePrice" formControlName="purchasePrice">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="retailPrice">Precio al Consumidor</label>
+                                    <input type="number" name="retailPrice" id="retailPrice" formControlName="retailPrice">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="wholesalePrice">Precio al Mayorista</label>
+                                    <input type="number" name="wholesalePrice" id="wholesalePrice" formControlName="wholesalePrice">
+                                </div>
+                            </div>
+                            <div class="col-auto col-md-auto mb-4">
+                                <div class="textfield">
+                                    <label for="active">Activo</label>
+                                    <input type="checkbox" name="active" id="active" formControlName="active">
+                                </div>
+                            </div>
+                            <div class="col-auto col-md-auto mb-4">
+                                <div class="textfield">
+                                    <label for="formula">Formula</label>
+                                    <input type="checkbox" name="formula" id="formula" formControlName="formula">
+                                </div>
+                            </div>
+                            <div class="col-auto col-md-auto mb-4">
+                                <div class="textfield">
+                                    <label for="delivery">Entregable</label>
+                                    <input type="checkbox" (change)="setDelivery()" name="delivery" id="delivery" formControlName="delivery">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="deliveryPrice">Precio de Entrega</label>
+                                    <input type="number" class="disabled" name="deliveryPrice" id="deliveryPrice" formControlName="deliveryPrice">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 mb-4">
+                                <div class="textfield">
+                                    <label for="description">Descripcion</label>
+                                    <textarea class="ry" name="description" id="description" [rows]="5" formControlName="description"></textarea>
+                                </div>
+                            </div>
+                            
+
+                        </form>
+                    </div>
+    
+                </div>            
+            </div>
+
+            <!-- CATENGORIES -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto pr-0">
+                                <h3 class="h5">Categorias</h3>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-secondary btn-sm" (click)="openModalCategory()">
+                                    <span class="font-weight-bold">Agregar Categoria</span>
+                                    <span class="ml-2 icon">
+                                        <fa-icon [icon]="iconPlus">plus</fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-auto">
+                                <a class="text-box-info pr-1 text-uppercase">
+                                    <span class="font-weight-bold">Hierro</span>
+                                    <button class="btn btn-icon btn-sm p-0 ml-2">
+                                        <span class="icon">
+                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-auto">
+                                <a class="text-box-info pr-1 text-uppercase">
+                                    <span class="font-weight-bold">Entregable</span>
+                                    <button class="btn btn-icon btn-sm p-0 ml-2">
+                                        <span class="icon">
+                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-auto">
+                                <a class="text-box-info pr-1 text-uppercase">
+                                    <span class="font-weight-bold">AG</span>
+                                    <button class="btn btn-icon btn-sm p-0 ml-2">
+                                        <span class="icon">
+                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div class="col-auto">
+                                <a class="text-box-info pr-1 text-uppercase">
+                                    <span class="font-weight-bold">VARILLA</span>
+                                    <button class="btn btn-icon btn-sm p-0 ml-2">
+                                        <span class="icon">
+                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Images -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto pr-0">
+                                <h3 class="h5">Imagenes de Muestra</h3>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-success btn-sm">
+                                    <span class="font-weight-bold">Guardar Img</span>
+                                    <span class="ml-2 icon">
+                                        <fa-icon [icon]="iconSave">save</fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <section class="container-img">
+                            <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png,image/gif" [expandable]="true">
+                                <ngx-dropzone-label >Arrastra tus imágenes aquí o haz clic para seleccionar</ngx-dropzone-label>
+                                @for (item of imageFile.files; track $index) {
+                                    <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" (removed)="onRemove(item)">
+                                        <ngx-dropzone-label>
+                                            <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/>
+                                        </ngx-dropzone-label>
+                                        <!-- <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/> -->
+                                    </ngx-dropzone-preview>
+                                }
+                                
+                            </ngx-dropzone>
+                        </section>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEASUREMENT -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-auto pr-0">
+                                <h3 class="h5">Precio - Dimension</h3>
+                            </div>
+                            <div class="col-auto">
+                                <button class="btn btn-secondary btn-sm" (click)="openModal()">
+                                    <span class="font-weight-bold">Agregar Dimension</span>
+                                    <span class="ml-2 icon">
+                                        <fa-icon [icon]="iconPlus">plus</fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-table table-responsive-lg table-card-md table-hover">
+                        <table class="table mb-4">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">#</th>
+                                    <th class="text-left">Nombre</th>
+                                    <th class="text-center">Abreviatura</th>
+                                    <th class="text-center">BASE</th>
+                                    <th class="text-right">Valor Equivalente</th>
+                                    <th class="text-right">Precio</th>
+                                    <th ></th>
+                                    <th class="text-right">Opcion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of product.assignmentMeasureList; track $index) {
+                                    <tr>
+                                        <td class="text-left">{{$index+1}}</td>
+                                        <td class="text-left">{{item.measurementUnit?.name}}</td>
+                                        <td class="text-center">{{item.measurementUnit?.abbreviation}}</td>
+                                        <td class="text-center">
+                                            <span class="text-box-success"
+                                            [class.text-box-success]="item.isBase"
+                                            [class.text-box-danger]="!item.isBase">
+                                                {{item.isBase? 'SI': 'NO'}}
+                                            </span>
+                                        </td>
+                                        <td class="text-right">{{item.equivalentValue}}</td>
+                                        <td class="text-right">{{item.price}}</td>
+                                        <td></td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+
+    <app-modal 
+    [isAutoClose]="true" 
+    [alignItems]="'center'" 
+    [sizeTag]="'col-9 col-md-5 col-lg-4'"
+    [title]="'Agregar Dimension'" 
+    [showFooter]="true"
+    #modalAddCategory>
+        <div class="col">
+            <form class="row">
+                <div class="col-12 mb-4">
+                    <div class="textfield">
+                        <label for="measure">Lista de Categorias</label>
+                        <div class="custom-select">
+                            <select class="select-list" name="measure" id="measure">
+                                <option value="" disabled>-- Seleccione una Categoria --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <button class="btn btn-success btn-block">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </app-modal>
+
+    <app-modal 
+    [isAutoClose]="true" 
+    [alignItems]="'center'" 
+    [sizeTag]="'col-9 col-md-5 col-lg-4'"
+    [title]="'Agregar Dimension'" 
+    [showFooter]="true"
+    #modalAddDim>
+        <div class="col">
+            <form class="row">
+                <div class="col-12 mb-4">
+                    <div class="textfield">
+                        <label for="measure">Lista de DIMs</label>
+                        <div class="custom-select">
+                            <select class="select-list" name="measure" id="measure">
+                                <option value="" disabled>-- Seleccione un DIM --</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="textfield">
+                        <label for="equivalentValue">Valor Equivalente</label>
+                        <input type="number" name="equivalentValue" id="equivalentValue">
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <div class="textfield">
+                        <label for="price">Preci (Q)</label>
+                        <input type="number" name="price" id="price">
+                    </div>
+                </div>
+                <div class="col-12 mb-4">
+                    <button class="btn btn-success btn-block">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </app-modal>
+</app-dashboard>

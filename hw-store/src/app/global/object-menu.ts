@@ -3,7 +3,7 @@ export interface SectionMenu {
     id: number;
     section: string;
     subSections: Array<SubSectionMenu>;
-
+    roles: Array<string>;
 }
 
 export interface SubSectionMenu {

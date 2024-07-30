@@ -41,9 +41,16 @@
                             <p class="helper-text color-danger"
                             [class.helper-text-visible]="userForm.get('password')?.errors && (userForm.get('password')?.touched || isFormSubmitted) && userForm.get('password')?.hasError('required')"
                             >El campo es Obligatorio</p>
+
+                            <!-- @if (showMsgError) {
+                                <p class="helper-text helper-text-visible text-center color-danger">El Username o Contraseña no son correctos</p>
+                            } -->
+                            <p class="helper-text helper-text-visible text-center color-danger"
+                            [class.helper-text-visible]="showMsgError">El Username o Contraseña no son correctos</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-10 col-sm-108 ">
                     <button class="btn btn-primary btn-block" (click)="onSubmit()" [disabled]="userForm.invalid">Iniciar Sesion</button>
                 </div>

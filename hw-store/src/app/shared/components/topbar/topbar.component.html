@@ -1,4 +1,16 @@
 <!-- HEADER -->
 <div class="header topbar">
-            
+    <div>
+        <button class="btn btn-sm color-primary"><fa-icon [icon]="iconMenu" [class.rotate-icon]="false"></fa-icon></button>
+    </div>
+    <div>{{today}}</div>
+    <div>
+        <a class="btn color-danger" (click)="singOf()">Cerrar Sesion</a>
+        <!-- <button class="btn">
+            Nombre Usuario 
+            <i class="icon-right ml-1">
+                <fa-icon [icon]="iconFaAngleDown" [class.rotate-icon]="false"></fa-icon>
+            </i>
+        </button> -->
+    </div>
 </div>
