@@ -1,3 +1,255 @@
 <app-dashboard>
+    <div class="col p-0 mt-4">
+        <div class="row justify-content-sm-between justify-content-center">
+            <div class="col-auto mb-4">
+                <h2 class="h3 color-primary ">Agregar Nuevo Producto </h2>
+            </div>
+            <!-- <div class="col-auto mb-4 d-none d-md-flex">
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-success btn-sm" (click)="submitProduct()">Actualizar Datos</button>
+                </div>
+            </div> -->
+        </div>
+        <div class="cards mb-4 shadows">
+            <!-- <div class="card-header">
+                <h2 class="h4">Agregar Nuevo Producto </h2>
+            </div> -->
+            <div class="card-body">
+                <div class="row">
+                    <!-- DATA -->
+                    <div class="col-12">
+                        <form class="row justify-content-center" [formGroup]="productForm">
+                            
+                            <div class="col-12 mb-4">
+                                <div class="d-flex flex-row justify-content-end">
+                                    <button class="btn btn-success btn-sm" (click)="submitProduct()">Crear Producto</button>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="code">
+                                        <span>Codigo</span>
+                                        <span class="color-danger">*</span>
+                                    </label>
+                                    <input type="text" name="code" id="code" formControlName="code" placeholder="Codigo Producto"
+                                    [class.is-invalid]="productForm.get('code')?.errors && (productForm.get('code')?.touched || isFormSubmitted)"
+                                    [class.is-valid]="!productForm.get('code')?.errors && productForm.get('code')?.touched">
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('code')?.errors && (productForm.get('code')?.touched || isFormSubmitted) && productForm.get('code')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="name">Nombre<span class="color-danger">*</span></label>
+                                    <input type="text" name="name" id="name" formControlName="name" placeholder="Nombre"
+                                    [class.is-invalid]="productForm.get('name')?.errors && (productForm.get('name')?.touched || isFormSubmitted)"
+                                    [class.is-valid]="!productForm.get('name')?.errors && productForm.get('name')?.touched">
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('name')?.errors && (productForm.get('name')?.touched || isFormSubmitted) && productForm.get('name')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="brand">Marca<span class="color-danger">*</span></label>
+                                    <div class="custom-select">
+                                        <select class="select-list" formControlName="brandId"
+                                        [class.is-invalid]="productForm.get('brandId')?.errors && (productForm.get('brandId')?.touched || isFormSubmitted)"
+                                        [class.is-valid]="!productForm.get('brandId')?.errors && productForm.get('brandId')?.touched">
+                                            <option [disabled]="true" value="" selected>-- Seleccione la Marca --</option>
+                                            @for (item of listBrand; track item.id) {
+                                                <option [value]="item.id">{{item.name}}</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('brandId')?.errors && (productForm.get('brandId')?.touched || isFormSubmitted) && productForm.get('brandId')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="measure">DIM<span class="color-danger">*</span></label>
+                                    <div class="custom-select">
+                                        <select class="select-list" name="measure" id="measure" formControlName="measurementUnitId"
+                                        [class.is-invalid]="productForm.get('measurementUnitId')?.errors && (productForm.get('measurementUnitId')?.touched || isFormSubmitted)"
+                                        [class.is-valid]="!productForm.get('measurementUnitId')?.errors && productForm.get('measurementUnitId')?.touched">
+                                            <option value="" disabled>-- Seleccione un DIM --</option>
+                                            @for (item of listDim; track item.id) {
+                                                <option [value]="item.id">{{item.name}}</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('measurementUnitId')?.errors && (productForm.get('measurementUnitId')?.touched || isFormSubmitted) && productForm.get('measurementUnitId')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="minAmount">Minimo Stock<span class="color-danger">*</span></label>
+                                    <input type="number" name="minAmount" id="minAmount" formControlName="minAmount" placeholder="Minimo Stock"
+                                    [class.is-invalid]="productForm.get('minAmount')?.errors && (productForm.get('minAmount')?.touched || isFormSubmitted)"
+                                    [class.is-valid]="!productForm.get('minAmount')?.errors && productForm.get('minAmount')?.touched">
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('minAmount')?.errors && (productForm.get('minAmount')?.touched || isFormSubmitted) && productForm.get('minAmount')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="purchasePrice">Precio de Compra<span class="color-danger">*</span></label>
+                                    <input type="number" name="purchasePrice" id="purchasePrice" formControlName="purchasePrice" placeholder="Precio de Compra"
+                                    [class.is-invalid]="productForm.get('purchasePrice')?.errors && (productForm.get('purchasePrice')?.touched || isFormSubmitted)"
+                                    [class.is-valid]="!productForm.get('purchasePrice')?.errors && productForm.get('purchasePrice')?.touched">
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('purchasePrice')?.errors && (productForm.get('purchasePrice')?.touched || isFormSubmitted) && productForm.get('purchasePrice')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="retailPrice">Precio al Consumidor<span class="color-danger">*</span></label>
+                                    <input type="number" name="retailPrice" id="retailPrice" formControlName="retailPrice" placeholder="Precio al Consumidor"
+                                    [class.is-invalid]="productForm.get('retailPrice')?.errors && (productForm.get('retailPrice')?.touched || isFormSubmitted)"
+                                    [class.is-valid]="!productForm.get('retailPrice')?.errors && productForm.get('retailPrice')?.touched">
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('retailPrice')?.errors && (productForm.get('retailPrice')?.touched || isFormSubmitted) && productForm.get('retailPrice')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="wholesalePrice">Precio al Mayorista<span class="color-danger">*</span></label>
+                                    <input type="number" name="wholesalePrice" id="wholesalePrice" formControlName="wholesalePrice" placeholder="Precio al Mayorista"
+                                    [class.is-invalid]="productForm.get('wholesalePrice')?.errors && (productForm.get('wholesalePrice')?.touched || isFormSubmitted)"
+                                    [class.is-valid]="!productForm.get('wholesalePrice')?.errors && productForm.get('wholesalePrice')?.touched">
+                                    <div class="legend">
+                                        <p class="helper-text color-danger"
+                                        [class.helper-text-visible]="productForm.get('wholesalePrice')?.errors && (productForm.get('wholesalePrice')?.touched || isFormSubmitted) && productForm.get('wholesalePrice')?.hasError('required')"
+                                        >El campo es Obligatorio</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="previousPrice">Precio Anterior</label>
+                                    <input type="number" name="previousPrice" id="previousPrice" formControlName="previousPrice" placeholder="Precio Anterior">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="discountType">Tipo de Descuento</label>
+                                    <div class="custom-select">
+                                        <select class="select-list" formControlName="discountType">
+                                            <option [disabled]="true" value="" selected>-- Seleccione un Tipo de Descuento --</option>
+                                            <option [value]="'NINGUNO'">NINGUNO</option>
+                                            <option [value]="'PORCENTUAL'">PORCENTUAL %</option>
+                                            <option [value]="'FIJO'">FIJO</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="discount">Descuento</label>
+                                    <input type="number" name="discount" id="discount" formControlName="discount" placeholder="Descuento">
+                                </div>
+                            </div>
+                            
+
+
+                            <div class="col-auto col-md-auto mb-4">
+                                <div class="textfield">
+                                    <label for="formula">Formula</label>
+                                    <input type="checkbox" name="formula" id="formula" formControlName="formula">
+                                </div>
+                            </div>
+                            <div class="col-auto col-md-auto mb-4">
+                                <div class="textfield">
+                                    <label for="delivery">Entregable</label>
+                                    <input type="checkbox" (change)="setDelivery()" name="delivery" id="delivery" formControlName="delivery">
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="deliveryPrice">Precio de Entrega</label>
+                                    <input type="number" class="disabled" name="deliveryPrice" id="deliveryPrice" formControlName="deliveryPrice" placeholder="Precio de Entrega">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12 mb-4">
+                                <div class="textfield">
+                                    <label for="description">Descripcion</label>
+                                    <textarea class="ry" name="description" id="description" [rows]="5" formControlName="description"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-auto pr-0">
+                                        <h3 class="h6">Imagenes de Muestra</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <section class="container-img">
+                                    <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png,image/gif" [expandable]="true">
+                                        <ngx-dropzone-label >Arrastra tus imágenes aquí o haz clic para seleccionar</ngx-dropzone-label>
+                                        @for (item of imageFile.files; track $index) {
+                                            <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" (removed)="onRemove(item)">
+                                                <ngx-dropzone-label>
+                                                    <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/>
+                                                </ngx-dropzone-label>
+                                                <!-- <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/> -->
+                                            </ngx-dropzone-preview>
+                                        }
+                                        
+                                    </ngx-dropzone>
+                                </section>
+                            </div>
+                            
+                            <!-- <div class="col-12 mb-4">
+                                <div class="d-flex flex-row justify-content-end">
+                                    <button class="btn btn-success btn-sm" (click)="submitProduct()">Crear Producto</button>
+                                </div>
+                            </div> -->
+
+                        </form>
+                    </div>
     
+                </div>            
+            </div>
+
+            
+        </div>
+    </div>
+
+    <app-modal 
+    [isAutoClose]="true" 
+    [alignItems]="'center'" 
+    [showFooter]="true" 
+    [sizeTag]="'col-12 col-sm-8 col-md-4'" #modalMsg>
+        <p>{{msg}}</p>
+    </app-modal>
 </app-dashboard>

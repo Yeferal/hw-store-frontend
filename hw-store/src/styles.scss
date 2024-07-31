@@ -1809,21 +1809,27 @@ border: 1px solid var(--primary-color);
 .textfield > input.input-error,
 .textfield > input.is-invalid,
 .textfield > textarea.input-error,
-.textfield > textarea.is-invalid {
+.textfield > textarea.is-invalid,
+.textfield > .custom-select > select.input-error,
+.textfield > .custom-select > select.is-invalid {
 border: 2px solid var(--danger-color);
 }
 
 .textfield > input.input-success,
 .textfield > input.is-valid,
 .textfield > textarea.input-success,
-.textfield > textarea.is-valid {
+.textfield > textarea.is-valid,
+.textfield > .custom-select > select.input-success,
+.textfield > .custom-select > select.is-valid {
   border: 2px solid var(--success-color);
 }
 
 .textfield > input.input-warning,
 .textfield > input.is-incomplete
 .textfield > textarea.input-warning,
-.textfield > textarea.is-incomplete {
+.textfield > textarea.is-incomplete
+.textfield > .custom-select > select.input-warning,
+.textfield > .custom-select > select.is-incomplete {
   border: 2px solid var(--warning-color);
 }
 
@@ -1906,6 +1912,10 @@ content: '';
   border: 1px solid var(--primary-color);
 }
 
+// .textfield > .custom-select > select.input-error,
+// .textfield > .custom-select > select.is-invalid {
+// border: 2px solid var(--danger-color);
+// }
 
 
 .textfield > input[type="checkbox"]:checked {

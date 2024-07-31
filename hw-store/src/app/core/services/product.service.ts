@@ -28,9 +28,8 @@ export class ProductService {
   }
 
   postProduct(data: any): Observable<any> {
-    return this.http.get<any>(this.URL_API+'/v1/products', {
-      withCredentials: true,
-      params: data
+    return this.http.post<any>(this.URL_API+'/v1/products', data, {
+      withCredentials: true
     });
   }
 }

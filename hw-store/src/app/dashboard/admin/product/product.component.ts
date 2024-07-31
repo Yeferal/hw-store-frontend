@@ -10,6 +10,11 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FilePreviewPipe } from '../../../shared/pipes/file-preview.pipe';
 import { Image } from '../../../shared/class/image';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { InventoryService } from '../../../core/services/inventory.service';
+import { MeasurementUnit } from '../../../core/models/measurement-unit';
+import { Brand } from '../../../core/models/brand';
+import { Category } from '../../../core/models/category';
+import { AssignmentMeasure } from '../../../core/models/assignment-measure';
 
 @Component({
   selector: 'app-product',
@@ -47,37 +52,62 @@ export class ProductComponent implements OnInit{
     active: new FormControl('',[Validators.required]),
     formula: new FormControl('',[Validators.required]),
     delivery: new FormControl('',[Validators.required]),
-    deliveryPrice: new FormControl({value: '', disabled: false},[Validators.required]),
+    deliveryPrice: new FormControl({value: '', disabled: true},[Validators.required]),
     description: new FormControl('',[Validators.required])
   });
 
   product: Product;
   files: File[] = [];
+  listDim: Array<MeasurementUnit> = [];
+  listBrand: Array<Brand> = [];
+  listCategory: Array<Category> = [];
+  msg: string = '';
+  measureBase: MeasurementUnit;
   
   @ViewChild('modalAddDim') modalAddDim!: ModalComponent;
   @ViewChild('modalAddCategory') modalAddCategory!: ModalComponent;
 
   constructor(private productService: ProductService,
+    private inventoryService: InventoryService,
     private activatedRoute: ActivatedRoute, public imageFile: Image
   ) {}
 
   ngOnInit(): void {
     this.idProduct = this.watchParams();
     this.getProduct();
+    this.getAllDataForm()
   }
 
   watchParams(): any{
     return this.activatedRoute.snapshot.paramMap.get('id_product');
   }
 
+  getAllDataForm(){
+    this.inventoryService.getAllBrands().subscribe({
+      next: (res) => {
+        this.listBrand = res;
+      }
+    })
+    this.inventoryService.getAllMeasurementUnit().subscribe({
+      next: (res) => {
+        this.listDim = res;
+      }
+    })
+    this.inventoryService.getAllCategories().subscribe({
+      next: (res) => {
+        this.listCategory = res;
+      }
+    })
+  }
+
   getProduct(){
     this.productService.getProduct(this.idProduct).subscribe({
       next: (value) => {
           this.product = value;
-          
           this.product.creationDate = new Date(this.product.creationDate);
-          console.log(this.product);
           this.updateDataForm();
+          this.setMeasureBase(this.product.assignmentMeasureList); 
+          console.log(this.product);
           
       },
       error(err) {
@@ -85,6 +115,15 @@ export class ProductComponent implements OnInit{
           
       },
     })
+  }
+
+  setMeasureBase(list: Array<AssignmentMeasure>){
+    list.forEach(element => {
+      if (element.isBase && element.measurementUnit) {
+        this.measureBase = element.measurementUnit;
+        return;
+      }
+    });
   }
 
   submitProduct() {
@@ -96,7 +135,7 @@ export class ProductComponent implements OnInit{
     if (this.product) {
       this.productForm.get('code')?.setValue(this.product.code);
       this.productForm.get('name')?.setValue(this.product.name);
-      this.productForm.get('brand')?.setValue(this.product.brand?.name);
+      this.productForm.get('brand')?.setValue(this.product.brand?.id);
       this.productForm.get('creationDate')?.setValue(this.formatDateForInput(this.product.creationDate));
       this.productForm.get('creator')?.setValue(`desconocido`);
       if (this.product.creator) {

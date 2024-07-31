@@ -17,32 +17,45 @@
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="code">Codigo</label>
-                                    <input type="text" name="code" id="code" formControlName="code">
+                                    <label for="code">
+                                        Codigo
+                                        <span class="color-danger">*</span>
+                                    </label>
+                                    <input type="text" name="code" id="code" formControlName="code" placeholder="Codigo">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="name">Nombre</label>
-                                    <input type="text" name="name" id="name" formControlName="name">
+                                    <label for="name">
+                                        Nombre
+                                        <span class="color-danger">*</span>
+                                    </label>
+                                    <input type="text" name="name" id="name" formControlName="name" placeholder="Nombre">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="brand">Marca</label>
-                                    <input type="text" name="brand" id="brand" formControlName="brand">
+                                    <label for="brand">Marca<span class="color-danger">*</span></label>
+                                    <div class="custom-select">
+                                        <select class="select-list" formControlName="brand">
+                                            <option [disabled]="true">-- Seleccione la Marca --</option>
+                                            @for (item of listBrand; track item.id) {
+                                                <option [value]="item.id">{{item.name}}</option>
+                                            }
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="creationDate">Fecha de Creacion</label>
-                                    <input type="datetime-local" class="disabled" name="creationDate" id="creationDate" formControlName="creationDate">
+                                    <label for="creationDate">Fecha de Creacion<span class="color-danger">*</span></label>
+                                    <input type="datetime-local" class="disabled" name="creationDate" id="creationDate" formControlName="creationDate" placeholder="Fecha de Creacion">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="creator">Creado Por</label>
-                                    <input type="text" class="disabled" name="creator" id="creator" formControlName="creator">
+                                    <label for="creator">Creado Por<span class="color-danger">*</span></label>
+                                    <input type="text" class="disabled" name="creator" id="creator" formControlName="creator" placeholder="Creado Por">
                                 </div>
                             </div>
                             
@@ -52,7 +65,7 @@
                                     <label for="discountType">Tipo de Descuento</label>
                                     <div class="custom-select">
                                         <select class="select-list" formControlName="discountType">
-                                            <option [disabled]="true">TIPO DESCUENTO</option>
+                                            <option [disabled]="true" value="">TIPO DESCUENTO</option>
                                             <option [value]="'NINGUNO'">NINGUNO</option>
                                             <option [value]="'PORCENTUAL'">PORCENTUAL %</option>
                                             <option [value]="'FIJO'">FIJO</option>
@@ -63,37 +76,37 @@
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
                                     <label for="discount">Descuento</label>
-                                    <input type="number" name="discount" id="discount" formControlName="discount">
+                                    <input type="number" name="discount" id="discount" formControlName="discount" placeholder="Descuento">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="minAmount">Minimo Stock</label>
-                                    <input type="number" name="minAmount" id="minAmount" formControlName="minAmount">
+                                    <label for="minAmount">Minimo Stock<span class="color-danger">*</span></label>
+                                    <input type="number" name="minAmount" id="minAmount" formControlName="minAmount" placeholder="Minimo Stock">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
                                     <label for="previousPrice">Precio Anterior</label>
-                                    <input type="number" name="previousPrice" id="previousPrice" formControlName="previousPrice">
+                                    <input type="number" name="previousPrice" id="previousPrice" formControlName="previousPrice" placeholder="Precio Anterior">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="purchasePrice">Precio de Compra</label>
-                                    <input type="number" name="purchasePrice" id="purchasePrice" formControlName="purchasePrice">
+                                    <label for="purchasePrice">Precio de Compra<span class="color-danger">*</span></label>
+                                    <input type="number" name="purchasePrice" id="purchasePrice" formControlName="purchasePrice" placeholder="Precio de Compra">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="retailPrice">Precio al Consumidor</label>
-                                    <input type="number" name="retailPrice" id="retailPrice" formControlName="retailPrice">
+                                    <label for="retailPrice">Precio al Consumidor<span class="color-danger">*</span></label>
+                                    <input type="number" name="retailPrice" id="retailPrice" formControlName="retailPrice" placeholder="Precio al Consumidor">
                                 </div>
                             </div>
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
-                                    <label for="wholesalePrice">Precio al Mayorista</label>
-                                    <input type="number" name="wholesalePrice" id="wholesalePrice" formControlName="wholesalePrice">
+                                    <label for="wholesalePrice">Precio al Mayorista<span class="color-danger">*</span></label>
+                                    <input type="number" name="wholesalePrice" id="wholesalePrice" formControlName="wholesalePrice" placeholder="Precio al Mayorista">
                                 </div>
                             </div>
                             <div class="col-auto col-md-auto mb-4">
@@ -117,13 +130,13 @@
                             <div class="col-6 col-md-4 mb-4">
                                 <div class="textfield">
                                     <label for="deliveryPrice">Precio de Entrega</label>
-                                    <input type="number" class="disabled" name="deliveryPrice" id="deliveryPrice" formControlName="deliveryPrice">
+                                    <input type="number" class="disabled" name="deliveryPrice" id="deliveryPrice" formControlName="deliveryPrice" placeholder="Precio de Entrega">
                                 </div>
                             </div>
                             <div class="col-12 col-md-12 mb-4">
                                 <div class="textfield">
                                     <label for="description">Descripcion</label>
-                                    <textarea class="ry" name="description" id="description" [rows]="5" formControlName="description"></textarea>
+                                    <textarea class="ry" name="description" id="description" [rows]="5" formControlName="description" placeholder="Descripcion"></textarea>
                                 </div>
                             </div>
                             
@@ -154,9 +167,21 @@
                     </div>
                     <div class="col-12">
                         <div class="row">
+                            @for (item of product.assignmentCategoryList; track item.id) {
+                                <div class="col-auto">
+                                    <a class="text-box-info pr-1 text-uppercase">
+                                        <span class="font-weight-bold">{{item.name}}</span>
+                                        <button class="btn btn-icon btn-sm p-0 ml-2">
+                                            <span class="icon">
+                                                <fa-icon [icon]="iconDelete">delete</fa-icon>
+                                            </span>
+                                        </button>
+                                    </a>
+                                </div>
+                            }
                             <div class="col-auto">
                                 <a class="text-box-info pr-1 text-uppercase">
-                                    <span class="font-weight-bold">Hierro</span>
+                                    <span class="font-weight-bold">test</span>
                                     <button class="btn btn-icon btn-sm p-0 ml-2">
                                         <span class="icon">
                                             <fa-icon [icon]="iconDelete">delete</fa-icon>
@@ -165,38 +190,6 @@
                                 </a>
                             </div>
 
-                            <div class="col-auto">
-                                <a class="text-box-info pr-1 text-uppercase">
-                                    <span class="font-weight-bold">Entregable</span>
-                                    <button class="btn btn-icon btn-sm p-0 ml-2">
-                                        <span class="icon">
-                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
-                                        </span>
-                                    </button>
-                                </a>
-                            </div>
-
-                            <div class="col-auto">
-                                <a class="text-box-info pr-1 text-uppercase">
-                                    <span class="font-weight-bold">AG</span>
-                                    <button class="btn btn-icon btn-sm p-0 ml-2">
-                                        <span class="icon">
-                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
-                                        </span>
-                                    </button>
-                                </a>
-                            </div>
-
-                            <div class="col-auto">
-                                <a class="text-box-info pr-1 text-uppercase">
-                                    <span class="font-weight-bold">VARILLA</span>
-                                    <button class="btn btn-icon btn-sm p-0 ml-2">
-                                        <span class="icon">
-                                            <fa-icon [icon]="iconDelete">delete</fa-icon>
-                                        </span>
-                                    </button>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -224,10 +217,10 @@
                         <section class="container-img">
                             <ngx-dropzone (change)="onSelect($event)" accept="image/jpeg,image/jpg,image/png,image/gif" [expandable]="true">
                                 <ngx-dropzone-label >Arrastra tus imágenes aquí o haz clic para seleccionar</ngx-dropzone-label>
-                                @for (item of imageFile.files; track $index) {
+                                @for (item of product.images; track $index) {
                                     <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" (removed)="onRemove(item)">
                                         <ngx-dropzone-label>
-                                            <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/>
+                                            <img [src]="item.imagePath" [alt]="item.id" class="preview-image"/>
                                         </ngx-dropzone-label>
                                         <!-- <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/> -->
                                     </ngx-dropzone-preview>
@@ -314,6 +307,9 @@
                         <div class="custom-select">
                             <select class="select-list" name="measure" id="measure">
                                 <option value="" disabled>-- Seleccione una Categoria --</option>
+                                @for (item of listCategory; track item.id) {
+                                    <option [value]="item.id">{{item.name}}</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -340,6 +336,9 @@
                         <div class="custom-select">
                             <select class="select-list" name="measure" id="measure">
                                 <option value="" disabled>-- Seleccione un DIM --</option>
+                                @for (item of listDim; track item.id) {
+                                    <option [value]="item.id">{{item.name}}</option>
+                                }
                             </select>
                         </div>
                     </div>

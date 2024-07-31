@@ -47,6 +47,11 @@ export class Image {
         this.files.splice(this.files.indexOf(event), 1);
     }
 
+    removeAllFile() {
+      this.previews = [];
+      this.files = [];
+  }
+
     extraerBase64 = async ($event: any) => new Promise((resolve, reject):any => {
         try {
           const unsafeImg = window.URL.createObjectURL($event);
