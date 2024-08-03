@@ -27,6 +27,12 @@ export class ProductService {
     });
   }
 
+  getProductByCode(code: any): Observable<Product> {
+    return this.http.get<Product>(this.URL_API+`/v1/products/codes/${code}`, {
+      withCredentials: true
+    });
+  }
+
   postProduct(data: any): Observable<any> {
     return this.http.post<any>(this.URL_API+'/v1/products', data, {
       withCredentials: true

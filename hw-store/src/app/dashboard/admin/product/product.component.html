@@ -220,7 +220,7 @@
                                 @for (item of product.images; track $index) {
                                     <ngx-dropzone-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" (removed)="onRemove(item)">
                                         <ngx-dropzone-label>
-                                            <img [src]="item.imagePath" [alt]="item.id" class="preview-image"/>
+                                            <img [src]="URL_API+'/images/products/'+item.imagePath" [alt]="item.id" class="preview-image"/>
                                         </ngx-dropzone-label>
                                         <!-- <img [src]="imageFile.previews[$index]" [alt]="item.name" class="preview-image"/> -->
                                     </ngx-dropzone-preview>
@@ -346,13 +346,13 @@
                 <div class="col-12 mb-4">
                     <div class="textfield">
                         <label for="equivalentValue">Valor Equivalente</label>
-                        <input type="number" name="equivalentValue" id="equivalentValue">
+                        <input type="number" name="equivalentValue" id="equivalentValue" placeholder="Valor Equivalente">
                     </div>
                 </div>
                 <div class="col-12 mb-4">
                     <div class="textfield">
-                        <label for="price">Preci (Q)</label>
-                        <input type="number" name="price" id="price">
+                        <label for="price">Precio (Q)</label>
+                        <input type="number" name="price" id="price" placeholder="Precio en Q">
                     </div>
                 </div>
                 <div class="col-12 mb-4">

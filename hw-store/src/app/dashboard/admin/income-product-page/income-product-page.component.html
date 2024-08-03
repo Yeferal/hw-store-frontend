@@ -1,3 +1,190 @@
 <app-dashboard>
-    
+    <div class="col p-0 mt-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="h3 color-primary font-weight-bold">Nuevo Ingreso</h2>
+            </div>
+            <div class="col-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5">Proveedor</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="row align-items-end" [formGroup]="supplierForm">
+                            <div class="col-12 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="code">Proveedor (Codigo) <span class="color-danger">*</span></label>
+                                    <input type="text" name="code" id="code" placeholder="Codigo" formControlName="code" (change)="getSupplier($event)">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="date">Fecha Ingreso <span class="color-danger">*</span></label>
+                                    <input type="date" name="date" id="date" placeholder="Fecha Ingreso" formControlName="date">
+                                </div>
+                            </div>
+                            <!-- <div class="col-12 col-md-6 mb-4">
+                                <div class="textfield">
+                                    <label for="total">Total<span class="color-danger">*</span></label>
+                                    <input type="number" name="total" id="total" placeholder="Total de Compra">
+                                </div>
+                            </div> -->
+                            <div class="col-12 col-md-4 mb-4">
+                                <button class="btn btn-success btn-block" 
+                                [disabled]="supplierForm.invalid || listProducts && listProducts.length==0" (click)="submitIncome()"
+                                >Finalizar Ingreso</button>    
+                            </div>
+                            <div class="col-12 mb-4">
+                                @if (supplier) {
+                                    <div class="row justify-content-center">
+                                        <label class="text mr-2">Nombre: <span class="text font-weight-bold"> {{supplier.name}}</span>,</label>
+                                        <label class="text">Tel: <span class="text font-weight-bold"> {{supplier.tel1}}</span></label>
+                                    </div>
+                                }
+
+                                @if (!isExistSupplier) {
+                                    <div class="row justify-content-center">
+                                        <label class="text font-weight-normal text-danger">No se encontro el proveedor</label>
+                                    </div>
+                                }
+                            </div>
+                            <!-- <div class="col-12">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-primary btn-block" [disabled]="supplierForm.invalid &&  listProducts && listProducts.length==0">Finalizar Ingreso</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5">Producto</h2>
+                    </div>
+                    <div class="card-body">
+                        <form class="row align-items-end" [formGroup]="productForm">
+                            <div class="col-12 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="code">Producto (Codigo)<span class="color-danger">*</span></label>
+                                    <input type="text" name="code" id="code" placeholder="Codigo" formControlName="code" (change)="getProduct($event)">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="amount">Cantidad<span class="color-danger">*</span></label>
+                                    <input type="number" name="amount" id="amount" placeholder="Cantidad" formControlName="amount">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 mb-4">
+                                <div class="textfield">
+                                    <label for="purchasePrice">Precio Unitario<span class="color-danger">*</span></label>
+                                    <input type="number" name="purchasePrice" id="purchasePrice" placeholder="Precio" formControlName="unitPrice">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="textfield">
+                                    <label for="comment">Comentario</label>
+                                    <textarea name="comment" id="comment" class="r-none" placeholder="Commentario" [rows]="2" formControlName="comment"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                @if (newProduct) {
+                                    <div class="row justify-content-center">
+                                        <label class="text mr-2">Nombre: <span class="text font-weight-bold"> {{newProduct.name}}</span>,</label>
+                                        <label class="text mr-2">Marca: <span class="text font-weight-bold"> {{newProduct.brand?.name}}</span>,</label>
+                                        <label class="text">Activo: <span class="text font-weight-bold"> {{newProduct.active? 'SI' : 'NO'}}</span></label>
+                                    </div>
+                                }
+                                @if (!isExistProduct) {
+                                    <div class="row justify-content-center">
+                                        <label class="text font-weight-normal text-danger">No se encontro el producto</label>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-12">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6">
+                                        <button class="btn btn-primary btn-block" (click)="addProduct()" [disabled]="productForm.invalid">Agregar Producto</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5">Lista de Ingreso</h2>
+                    </div>
+                    <div class="card-body p-0">
+                        
+                        <div class="row justify-content-end p-4">
+                            <div class="col-auto">
+                                @if (total && total>0) {
+                                    <label class="text font-weight-bold">Total: Q <span class="text font-weight-bold color-secondary">{{total.toFixed(2)}}</span></label>
+                                }
+                            </div>
+                        </div>
+                        <div class="container-table table-responsive-lg table-card-md table-hover">
+                            <table class="table mb-4" >
+                                <thead>
+                                    <tr>
+                                        <!-- <th class="text-left">id</th> -->
+                                        <th class="text-left">Codigo</th>
+                                        <th class="text-left">Nombre</th>
+                                        <th class="text-right">Cantidad</th>
+                                        <th class="text-right">Precio Unitario (Q)</th>
+                                        <th class="text-right">Total (Q)</th>
+                                        <!-- <th class="text-center">roles</th> -->
+                                        <th class="text-right">Borrar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (item of listProducts; track $index) {
+                                        <tr>
+                                            <td class="text-left" data-label="Codigo">{{item.product.code}}</td>
+                                            <td class="text-left" data-label="Nombre">{{item.product.name}}</td>
+                                            <td class="text-right" data-label="Cantidad">{{item.amount.toFixed(2)}}</td>
+                                            <td class="text-right" data-label="Precio Unitario (Q)">{{item.unitPrice.toFixed(2)}}</td>
+                                            <td class="text-right" data-label="Total (Q)">{{item.subTotal.toFixed(2)}}</td>
+                                            <td class="text-right" data-label="Borrar">
+                                                <div class="row flex-row align-items-center justify-content-end">
+                                                    <button class="btn btn-icon btn-sm color-danger p-2" (click)="removeProduct($index)">
+                                                        <span class="icon">
+                                                            <fa-icon [icon]="iconDelete"></fa-icon>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                    @if (total && total>0) {
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="text-right"></td>
+                                            <td class="text-right text" data-label="Total">
+                                                <span class="text font-weight-bold color-primary">Q {{total.toFixed(2)}}</span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-modal [isAutoClose]="true" [showFooter]="true" [alignItems]="'center'" [sizeTag]="'col-12 col-sm-10 col-md-4'" #modal>
+        <p class="text-wrap text-uppercase">{{msg}}</p>
+    </app-modal>
 </app-dashboard>

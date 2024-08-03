@@ -15,6 +15,7 @@ import { MeasurementUnit } from '../../../core/models/measurement-unit';
 import { Brand } from '../../../core/models/brand';
 import { Category } from '../../../core/models/category';
 import { AssignmentMeasure } from '../../../core/models/assignment-measure';
+import { GLOBAL_API } from '../../../global/api-url';
 
 @Component({
   selector: 'app-product',
@@ -35,6 +36,7 @@ export class ProductComponent implements OnInit{
   iconPlus = faPlus;
   iconSave = faSave;
   idProduct: number;
+  readonly URL_API = GLOBAL_API.API_INVENTORY;
 
   productForm: FormGroup = new FormGroup({
     code: new FormControl('',[Validators.required]),
