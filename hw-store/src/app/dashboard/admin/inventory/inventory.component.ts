@@ -47,7 +47,6 @@ export class InventoryComponent implements OnInit {
       next: (res) => {
         this.pagePaginate = res;
         this.productList = this.pagePaginate.content;
-        console.log(this.productList);
         
       },
       error: (err) => {

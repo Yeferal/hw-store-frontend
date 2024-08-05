@@ -1,3 +1,215 @@
 <app-dashboard>
+    <div class="col p-0 mt-4">
+        <div class="row justify-content-between align-items-center mb-4">
+            <div class="col-auto">
+                <h2 class="h2">Categorias</h2>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success btn-sm">Agregar Categoria</button>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-12 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5">Lista de Productos</h2>
+                    </div>
+                    <div class="card-body p-0">
+                        <form class="row p-4 " [formGroup]="filterForm">
+                            <div class="col-12 col-md-6 mb-4">
+                                <div class="row align-items-end justify-content-center justify-content-md-start">
+                                    <div class="col-6 col-lg-4">
+                                        <div class="textfield">
+                                            <label for="search" class="input-label">Buscar</label>
+                                            <input type="search" formControlName="searchValue" name="search" id="search" placeholder="Buscar">
+                                        </div>
+                                    </div>
+                                    <div class="col-auto pl-0">
+                                        <!-- <button class="btn btn-success">Buscar</button> -->
+                                        <button class="btn btn-success btn-icon" (click)="getCategories()">
+                                            <fa-icon [icon]="iconSearch"></fa-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="row flex-row-reverse flex-md-row align-items-end justify-content-center justify-content-md-end">
+                                    <div class="col-auto">
+                                        <!-- <button class="btn btn-primary btn-block">Filtrar</button> -->
+                                        <button class="btn btn-success btn-icon" (click)="getCategoryFilter()">
+                                            <fa-icon [icon]="iconFilter"></fa-icon>
+                                        </button>
+                                    </div>
+                        
+                                    <div class="col-auto">
+                                        <div class="textfield">
+                                            <label class="input-label">Ordenar Por</label>
+                                            <div class="custom-select">
+                                                <select class="select-list" formControlName="sortField">
+                                                    <!-- <option disabled selected>Ordenar Por</option> -->
+                                                    <option value="id">Id</option>
+                                                    <option value="name">Nombre</option>
+                                                    <option value="state">Activos</option>
+                                                    <option value="featured">Destacados</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="textfield">
+                                            <label class="input-label">Sentido</label>
+                                            <div class="custom-select">
+                                                <select class="select-list" formControlName="sortOrder">
+                                                    <!-- <option disabled selected>Ordenar De</option> -->
+                                                    <option value="ASC">A a Z</option>
+                                                    <option value="DESC">Z a A</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="textfield">
+                                            <label class="input-label">Mostrar</label>
+                                            <div class="custom-select">
+                                                <select class="select-list" formControlName="size">
+                                                    <option value="10">10</option>
+                                                    <option value="25">25</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                    <!-- <option value="xydd">Role</option> -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     
+    <div class="container-table table-responsive-lg table-card-md table-hover">
+        <table class="table mb-4" >
+            <thead>
+                <tr>
+                    <th class="text-left">#</th>
+                    <th class="text-left">Id</th>
+                    <th class="text-left">Nombre</th>
+                    <th class="text-center">Estado</th>
+                    <th class="text-center">Destacado</th>
+                    <th class="text-right">Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (item of categoryList; track item.id) {
+                    <tr>
+                        <td class="text-left" data-label="#">{{$index+1}}</td>
+                        <td class="text-left" data-label="Id">{{item.id}}</td>
+                        <td class="text-left" data-label="Nombre">
+                            <span class="typography-body1 text-wrap">
+                                {{item.name}}
+                            </span>
+                        </td>
+                        <td class="text-center" data-label="Estado">
+                            <span class="typography-body3 text-wrap m-0"
+                            [class.text-box-danger]="!item.state"
+                            [class.text-box-success]="item.state"
+                            >
+                                {{item.state? 'Activo':'Desactivado'}}
+                            </span>
+                        </td>
+                        <td class="text-center" data-label="Destacado">
+                            <span class="typography-body3 text-wrap m-0"
+                            [class.text-box-warning]="!item.featured"
+                            [class.text-box-success]="item.featured"
+                            >
+                                {{item.featured? 'SI':'NO'}}
+                            </span>
+                        </td>
+
+                        <td class="text-right" data-label="Opciones">
+                            <div class="row flex-row align-items-center justify-content-end">
+                                <a class="btn btn-icon btn-sm color-primary mr-1 p-2"
+                                [routerLink]="['category', item.id]" routerLinkActive="router-link-active" 
+                                >
+                                    <span class="icon">
+                                        <fa-icon [icon]="iconInfo"></fa-icon>
+                                    </span>
+                                </a>
+                                <button class="btn btn-icon btn-sm color-secondary mr-1 p-2">
+                                    <span class="icon">
+                                        <fa-icon [icon]="iconEdit"></fa-icon>
+                                    </span>
+                                </button>
+                                <button class="btn btn-icon btn-sm color-danger p-2">
+                                    <span class="icon">
+                                        <fa-icon [icon]="iconDelete"></fa-icon>
+                                    </span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (pagePaginate) {
+            <!-- CONTENEDOR DE LA PAGINACION -->
+            <div class="d-flex flex-column justify-content-center align-items-center p-2 mb-2">
+                <div class="mb-1">
+                    <span class="typography-body2">Monstrando {{pagePaginate.pageable.offset+1}}-{{pagePaginate.pageable.offset+pagePaginate.numberOfElements}} de {{pagePaginate.totalElements}}</span>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center p-1">
+                    <div>
+                        <button class="btn btn-light btn-icon btn-sm mr-1" [disabled]="pagePaginate.first" (click)="getPreviousPage()">
+                            <fa-icon [icon]="iconArrowLeft"></fa-icon>
+                        </button>
+                    </div>
+                    <div>
+                        @if (pagePaginate.totalPages > 4) {
+                            <!-- @for (item of counter(pagePaginate.totalPages); track $index) {
+                                <button class="btn btn-sqr btn-sm mr-1" [class.btn-primary]="pagePaginate.pageable.pageNumber==pagePaginate.number">1</button>
+                            } -->
+                            @for (item of counter(3); track $index) {
+                                <button class="btn btn-sqr btn-sm mr-1" 
+                                [class.btn-primary]="$index==pagePaginate.number"
+                                [class.btn-light]="$index!=pagePaginate.number"
+                                [disabled]="$index==pagePaginate.number"
+                                (click)="getPage($index)"
+                                >{{$index+1}}</button>
+                            }
+                            <button class="btn btn-light btn-sqr btn-sm mr-1" [disabled]="true">...</button>
+                            <button class="btn btn-light btn-sqr btn-sm mr-1" 
+                            [class.btn-primary]="(pagePaginate.totalPages-1)==pagePaginate.number"
+                            [class.btn-light]="(pagePaginate.totalPages-1)!=pagePaginate.number"
+                            [disabled]="(pagePaginate.totalPages-1)==pagePaginate.number"
+                            (click)="getPage(pagePaginate.totalPages-1)">{{pagePaginate.totalPages}}</button>
+                        } @else {
+                            @for (item of counter(pagePaginate.totalPages); track $index) {
+                                <button class="btn btn-sqr btn-sm mr-1" 
+                                [class.btn-primary]="$index==pagePaginate.number"
+                                [class.btn-light]="$index!=pagePaginate.number"
+                                [disabled]="$index==pagePaginate.number"
+                                (click)="getPage($index)"
+                                >{{$index+1}}</button>
+                            }
+                        }
+                        
+                    </div>
+                    <div>
+                        <button class="btn btn-light btn-icon btn-sm" [disabled]="pagePaginate.last" (click)="getNexPage()">
+                            <fa-icon [icon]="iconArrowRight"></fa-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
 </app-dashboard>
