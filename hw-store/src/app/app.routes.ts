@@ -35,7 +35,12 @@ export const routes: Routes = [
         path: 'home/admin',
         loadChildren: () => import('./dashboard/admin/admin.routes').then(m => m.AUTH_ROUTES)
     },
+    {
+        path: 'home/store',
+        loadChildren: () => import('./dashboard/store/store.routes').then(m => m.STORE_ROUTES)
+    },
     
+
     {
         path: '**',
         component: NotFoundPageComponent

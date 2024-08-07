@@ -2,27 +2,20 @@ import { Injectable } from '@angular/core';
 import { GLOBAL_API } from '../../global/api-url';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Client } from '../models/client';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SalesService {
+export class ClientService {
 
   readonly URL_API = GLOBAL_API.API_SALES;
 
   constructor(private http: HttpClient) { }
 
-  postSaleComplete(data: any): Observable<any>{
-    return this.http.post<any>(this.URL_API+`/v1/sales`, data, {
+  getClientByNit(nit: string): Observable<Client>{
+    return this.http.get<Client>(this.URL_API+`/v1/clients/${nit}`, {
       withCredentials: true
     });
   }
-
-  postSaleIncompletes(data: any): Observable<any>{
-    return this.http.post<any>(this.URL_API+`/v1/sales/incompletes`, data, {
-      withCredentials: true
-    });
-  }
-
-
 }

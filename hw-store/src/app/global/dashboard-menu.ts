@@ -23,26 +23,26 @@ export let menuLinks: Array<SectionMenu> = [
                 links: [
                     {
                         id: 1,
-                        link: '/home/sales',
+                        link: '/home/store/make-sale',
                         selected: false,
                         name: 'Realizar Venta'
                     },
                     {
                         id: 2,
                         // link: '/store/test',
-                        link: '/sales/modify-sales',
+                        link: '/home/store/modify-sales',
                         selected: false,
                         name: 'Modificar Venta'
                     },
                     {
                         id: 3,
-                        link: '/sales/refound-products',
+                        link: '/home/store/refound-products',
                         selected: false,
                         name: 'Reintegrar Producto'
                     },
                     {
                         id: 4,
-                        link: '/sales/suggestions',
+                        link: '/home/store/suggestions',
                         selected: false,
                         name: 'Sugerencias'
                     },

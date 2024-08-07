@@ -1,0 +1,143 @@
+<div class="row p-0">
+    <div class="col-12 mb-4">
+        <div class="row align-items-end justify-content-center justify-content-md-start">
+            @if (saleInvoice) {
+                <div class="col-12 mb-4">
+                    <div class="row justify-content-end">
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-success" (click)="finalizeSale()">Finalizar</button>
+                        </div>
+                        <!-- <div class="col-auto">
+                            <button class="btn btn-sm btn-primary">Finalizar</button>
+                        </div> -->
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-warning" (click)="openModalPayment()">Abonar</button>
+                        </div>
+                        <div class="col-auto">
+                            <button class="btn btn-sm btn-danger" (click)="closeModal()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6 col-sm-4 mb-4">
+                    <span class="text font-weight-bold">NIT: </span>
+                    <span>{{saleInvoice.nit}}</span>
+                </div>
+                <div class="col-6 col-sm-4 mb-4">
+                    <span class="text font-weight-bold">Fecha: </span>
+                    <span>{{saleInvoice.date}}</span>
+                </div>
+                <div class="col-6 col-sm-4 mb-4">
+                    <span class="text font-weight-bold">Telefono: </span>
+                    <span>{{saleInvoice.tel}}</span>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <span class="text font-weight-bold">Nombre: </span>
+                    <span>{{saleInvoice.name}}</span>
+                </div>
+                <div class="col-12 col-sm-6 mb-4">
+                    <span class="text font-weight-bold">Direccion: </span>
+                    <span>{{saleInvoice.address}}</span>
+                </div>
+                <!-- <div class="col-12">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="text font-weight-bold">NIT: </span>
+                                    <span>{{saleInvoice.nit}}</span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <span class="text font-weight-bold">Fecha: </span>
+                                    <span>{{saleInvoice.date}}</span></td>
+                                <td></td>
+                                <td>
+                                    <span class="text font-weight-bold">Telefono: </span>
+                                    <span>{{saleInvoice.tel}}</span></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="text font-weight-bold">Nombre: </span>
+                                    <span>{{saleInvoice.name}}</span>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <span class="text font-weight-bold">Direccion: </span>
+                                    <span>{{saleInvoice.address}}</span>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div> -->
+
+            }
+        </div>
+    </div>
+</div>
+<div class="container-table table-responsive-lg table-card-md table-hover">
+    @if (listProductSale && listProductSale.length>0) {
+        <table class="table mb-4" >
+            <thead>
+                <tr>
+                    <th class="text-right">Cantidad</th>
+                    <th class="text-left">Codigo</th>
+                    <th class="text-center">Dimension</th>
+                    <th class="text-left">Descripcion</th>
+                    <th class="text-right">Precio Unitario</th>
+                    <th class="text-right">Monto</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th class="text-left"> </th>
+                    <th class="text-left"> </th>
+                    <th class="text-center"> </th>
+                    <th class="text-left"> </th>
+                    <th class="text-right"><span class="typography-body2">Total:</span> </th>
+                    <th class="text-right"><span class="typography-body1">Q {{total.toFixed(2)}}</span></th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @for (item of listProductSale; track $index) {
+                    <tr>
+                        <td class="text-right" data-label="Cantidad">{{item.amount.toFixed(2)}}</td>
+                        <td class="text-left" data-label="Codigo">{{item.product.code}}</td>
+                        <td class="text-center" data-label="Dimension">{{item.assignmentMeasure.measurementUnit?.name}}</td>
+                        <td class="text-left" data-label="Descripcion">{{item.description}}</td>
+                        <td class="text-right" data-label="Precio Unitario">{{item.unitPrice.toFixed(2)}}</td>
+                        <td class="text-right" data-label="Monto">{{item.subTotal.toFixed(2)}}</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+<!-- <div class="row p-0">
+    <div class="col-12">
+
+    </div>
+</div> -->
+
+<app-modal [isAutoClose]="true" [showFooter]="true" [alignItems]="'center'" [sizeTag]="'col-auto'"  [title]="'Abono de Compra'" #modalPayment>
+    <div class="col">
+        <form class="row" [formGroup]="paymentForm">
+            <div class="col-12 mb-4">
+                <div class="textfield">
+                    <label for="payment">Abono</label>
+                    <input type="number" name="payment" id="payment" [placeholder]="'Abono'" formControlName="payment">
+                </div>
+            </div>
+            <div class="col-12 mb-4">
+                <!-- <div class="row justify-content-center"> -->
+                    <button class="btn btn-success btn-block" (click)="finalizeIncompelteSale()">Finalizar Abono</button>
+                <!-- </div> -->
+            </div>
+        </form>
+    </div>
+</app-modal>
